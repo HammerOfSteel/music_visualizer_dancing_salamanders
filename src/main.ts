@@ -201,13 +201,24 @@ orbitControls.enableZoom = false;
 orbitControls.update();
 
 // --- Portrait/mobile framing -----------------------------------------
-// Detection is ASPECT-RATIO based (width/height), not a raw device-width
-// media query — this app is also embedded as an iframe on other pages
-// (dancingsalamanders.com's hero section), where the iframe itself can be
-// sized in a portrait aspect regardless of the visiting device, so the
-// check has to key off the actual rendered shape, not screen width. That
-// same embed can also land at a much wider RANGE of portrait aspects than
-// any real phone — e.g. a host page with a fixed pixel iframe height that
+// A host page can force mobile/portrait mode via a `?mobile=1` query
+// param on the iframe `src` (rather than the aspect-ratio auto-detection
+// below), e.g. picking between `https://music.livslusths.se/` and
+// `https://music.livslusths.se/?mobile=1` at embed time based on
+// `window.innerWidth`. Deliberately a query param, not a path (`/mobile`)
+// or a subdomain — this is a plain static-file nginx deploy with no SPA
+// route fallback configured, and a query param needs zero hosting/DNS
+// changes, just a different `src` string the host page already controls.
+const FORCE_MOBILE = new URLSearchParams(window.location.search).get('mobile') === '1';
+
+// Detection is otherwise ASPECT-RATIO based (width/height), not a raw
+// device-width media query — this app is also embedded as an iframe on
+// other pages (dancingsalamanders.com's hero section), where the iframe
+// itself can be sized in a portrait aspect regardless of the visiting
+// device, so the check has to key off the actual rendered shape, not
+// screen width. That same embed can also land at a much wider RANGE of
+// portrait aspects than any real phone — e.g. a host page with a fixed
+// pixel iframe height that
 // doesn't shrink for narrow viewports can produce a far more extreme
 // (taller/narrower) ratio than a phone screen ever would — so the camera
 // framing below is a continuous curve over the actual aspect, not one
@@ -250,6 +261,7 @@ function computePortraitFraming(aspect: number): { fov: number; distanceScale: n
 }
 let isPortraitMode = false;
 function computeIsPortrait(): boolean {
+  if (FORCE_MOBILE) return true;
   return window.innerWidth / window.innerHeight < PORTRAIT_ASPECT_THRESHOLD;
 }
 /** Applies the camera framing for the CURRENT aspect ratio every time it's
