@@ -1,0 +1,263 @@
+1
+00:00:01,754 --> 00:00:04,309
+Count what was kind.
+
+2
+00:00:04,309 --> 00:00:06,862
+Round to the light.
+
+3
+00:00:06,862 --> 00:00:08,617
+Carry the one.
+
+4
+00:00:08,617 --> 00:00:32,203
+Close out the night.
+
+5
+00:00:32,552 --> 00:00:35,106
+Tiny commits in a daylight repo,
+
+6
+00:00:35,106 --> 00:00:37,420
+push to the ledger where warm things go.
+
+7
+00:00:37,420 --> 00:00:39,654
+Rolling hash on the jokes we kept,
+
+8
+00:00:39,654 --> 00:00:42,207
+normalize breath when the worry crept.
+
+9
+00:00:42,207 --> 00:00:44,761
+Trailing fears trimmed, tabs to spaces,
+
+10
+00:00:44,761 --> 00:00:47,234
+pretty-print love in familiar places.
+
+11
+00:00:47,234 --> 00:00:49,947
+CRC laugh with a salt of grace,
+
+12
+00:00:49,947 --> 00:00:51,591
+verify vibes at a human pace.
+
+13
+00:00:51,941 --> 00:00:55,052
+Checksum of the heart, sum the tender parts,
+
+14
+00:00:55,052 --> 00:00:57,686
+add the quiet touches and the open starts.
+
+15
+00:00:57,686 --> 00:01:00,000
+When the totals rhyme with the breath you take,
+
+16
+00:01:00,000 --> 00:01:13,612
+you can rest your head and let tomorrow wake.
+
+17
+00:01:13,962 --> 00:01:16,596
+Parity bits in a cardigan pocket,
+
+18
+00:01:16,596 --> 00:01:19,069
+error-correct hugs in a homely socket.
+
+19
+00:01:19,069 --> 00:01:21,063
+Redundant smiles in a mirrored array,
+
+20
+00:01:21,063 --> 00:01:24,415
+failover comfort if the light goes grey.
+
+21
+00:01:24,415 --> 00:01:26,968
+Load balance sorrow on friendly shoulders,
+
+22
+00:01:26,968 --> 00:01:29,521
+distribute the weight till the night grows older.
+
+23
+00:01:29,521 --> 00:01:32,153
+Idempotent kindness returns the same,
+
+24
+00:01:32,153 --> 00:01:34,197
+safe to repeat with your favorite name.
+
+25
+00:01:34,548 --> 00:01:36,701
+Checksum of the heart, totals warm and clear,
+
+26
+00:01:36,701 --> 00:01:39,415
+sum of little mercies you allowed this year.
+
+27
+00:01:39,415 --> 00:01:41,728
+If the figure hums like a kettle’s tune,
+
+28
+00:01:41,728 --> 00:02:05,953
+you have verified love by the silver moon.
+
+29
+00:02:06,302 --> 00:02:08,776
+Diff what was said from what was meant,
+
+30
+00:02:08,776 --> 00:02:11,409
+minimize harm with a calm intent.
+
+31
+00:02:11,409 --> 00:02:14,043
+Cache the glow for a colder hour,
+
+32
+00:02:14,043 --> 00:02:16,675
+evict the gloom with a softer power.
+
+33
+00:02:16,675 --> 00:02:19,388
+Schema of hope with nullable blame,
+
+34
+00:02:19,388 --> 00:02:21,302
+typed to the real with your given name.
+
+35
+00:02:21,302 --> 00:02:24,734
+Close the log gently, rotate the file,
+
+36
+00:02:24,734 --> 00:02:27,655
+heart stays healthy in a smaller style.
+
+37
+00:02:28,004 --> 00:02:30,479
+Retriable joy.
+
+38
+00:02:30,479 --> 00:02:33,111
+Backoff of rage.
+
+39
+00:02:33,111 --> 00:02:34,627
+Circuit of trust.
+
+40
+00:02:34,627 --> 00:02:36,911
+Turn the page.
+
+41
+00:02:37,260 --> 00:02:39,973
+Checksum of the heart, let the sum be light,
+
+42
+00:02:39,973 --> 00:02:42,605
+round up the laughter and the made things right.
+
+43
+00:02:42,605 --> 00:02:45,000
+If the digest sings in a gentle key,
+
+44
+00:02:45,000 --> 00:02:47,920
+you are good to sleep and good to be.
+
+45
+00:02:48,270 --> 00:02:49,627
+May your diffs be small.
+
+46
+00:02:49,627 --> 00:02:50,664
+May your merges be kind.
+
+47
+00:02:50,664 --> 00:02:53,855
+May your code of the day compile in the mind.
+
+48
+00:02:53,855 --> 00:02:55,133
+May your cache hold warmth.
+
+49
+00:02:55,133 --> 00:02:56,489
+May your errors grow few.
+
+50
+00:02:56,489 --> 00:03:12,575
+May tomorrow retrieve every good thing in you.
+
+51
+00:03:12,925 --> 00:03:15,558
+Index the hugs, append the song,
+
+52
+00:03:15,558 --> 00:03:18,350
+drop the resentment that stayed too long.
+
+53
+00:03:18,350 --> 00:03:20,265
+Serialize joy in a feathered frame,
+
+54
+00:03:20,265 --> 00:03:23,855
+stream it to silence, commit its name.
+
+55
+00:03:23,855 --> 00:03:26,489
+Garbage collect what the grief won’t keep,
+
+56
+00:03:26,489 --> 00:03:28,962
+free up the memory for gentler sleep.
+
+57
+00:03:28,962 --> 00:03:31,675
+Backup the breath in a midnight air,
+
+58
+00:03:31,675 --> 00:03:34,117
+restore at dawn when the light is there.
+
+59
+00:03:34,467 --> 00:03:37,100
+Checksum of the heart, final line of code,
+
+60
+00:03:37,100 --> 00:03:39,894
+validate the love on the evening’s node.
+
+61
+00:03:39,894 --> 00:03:43,802
+If the sum holds true in the body’s core,
+
+62
+00:03:43,802 --> 00:03:58,054
+we are whole tonight, we can ask no more.
+
+63
+00:03:58,403 --> 00:04:01,197
+So close the ledger.
+
+64
+00:04:01,197 --> 00:04:03,191
+Sign with a sigh.
+
+65
+00:04:03,191 --> 00:04:06,223
+Kindness verified.
+
+66
+00:04:06,223 --> 00:04:08,776
+Good night.

@@ -1,0 +1,402 @@
+[
+  {
+    "start": 22.42,
+    "end": 25.053,
+    "text": "Crumbs on the table."
+  },
+  {
+    "start": 25.053,
+    "end": 27.686,
+    "text": "Stars on a cloth."
+  },
+  {
+    "start": 27.686,
+    "end": 30.318,
+    "text": "Read what they scatter."
+  },
+  {
+    "start": 30.318,
+    "end": 30.687,
+    "text": "Name what they cross."
+  },
+  {
+    "start": 31.036,
+    "end": 34.468,
+    "text": "Crumb to a cluster, cluster to line,"
+  },
+  {
+    "start": 34.468,
+    "end": 37.42,
+    "text": "table turns sky on a weekday time."
+  },
+  {
+    "start": 37.42,
+    "end": 40.292,
+    "text": "I trace with a fingertip, quiet and slow,"
+  },
+  {
+    "start": 40.292,
+    "end": 42.845,
+    "text": "graph of the hours where choices go."
+  },
+  {
+    "start": 42.845,
+    "end": 45.478,
+    "text": "Vector clocks ticking in flour-white arcs,"
+  },
+  {
+    "start": 45.478,
+    "end": 48.271,
+    "text": "ordering moments by soft small sparks."
+  },
+  {
+    "start": 48.271,
+    "end": 50.823,
+    "text": "Lamport notes in a kitchen of light,"
+  },
+  {
+    "start": 50.823,
+    "end": 53.378,
+    "text": "partial but honest, enough for the night."
+  },
+  {
+    "start": 53.378,
+    "end": 56.09,
+    "text": "Observer pattern, the fates take notes,"
+  },
+  {
+    "start": 56.09,
+    "end": 58.722,
+    "text": "threading our habits through hidden coats."
+  },
+  {
+    "start": 58.722,
+    "end": 61.197,
+    "text": "Factory of mornings, adapter of rain,"
+  },
+  {
+    "start": 61.197,
+    "end": 63.0,
+    "text": "decorator kindness on ordinary grain."
+  },
+  {
+    "start": 63.35,
+    "end": 67.5,
+    "text": "Breadcrumb cosmology, pattern in the crumbs,"
+  },
+  {
+    "start": 67.5,
+    "end": 69.653,
+    "text": "map of the many where the rhythm hums."
+  },
+  {
+    "start": 69.653,
+    "end": 72.128,
+    "text": "Monolith story or services of small,"
+  },
+  {
+    "start": 72.128,
+    "end": 84.942,
+    "text": "I watch the scatter and hold what calls."
+  },
+  {
+    "start": 85.293,
+    "end": 87.926,
+    "text": "Here on the cloth, a fork-made star,"
+  },
+  {
+    "start": 87.926,
+    "end": 90.478,
+    "text": "span id glitter where last laughs are."
+  },
+  {
+    "start": 90.478,
+    "end": 92.472,
+    "text": "I tag the glints with a whispered name,"
+  },
+  {
+    "start": 92.472,
+    "end": 95.186,
+    "text": "segments of meaning that never feel tame."
+  },
+  {
+    "start": 95.186,
+    "end": 98.378,
+    "text": "Raft of our voices elects one calm,"
+  },
+  {
+    "start": 98.378,
+    "end": 101.01,
+    "text": "leader for now with a linen balm."
+  },
+  {
+    "start": 101.01,
+    "end": 103.483,
+    "text": "CRDT mercy that never confers,"
+  },
+  {
+    "start": 103.483,
+    "end": 106.277,
+    "text": "yet merges to peace when the ledger stirs."
+  },
+  {
+    "start": 106.277,
+    "end": 108.909,
+    "text": "Feature flags flicker in the spine’s soft code,"
+  },
+  {
+    "start": 108.909,
+    "end": 111.543,
+    "text": "turn on the courage for a rain-wet road."
+  },
+  {
+    "start": 111.543,
+    "end": 114.176,
+    "text": "Service mesh selves with a mesh of care,"
+  },
+  {
+    "start": 114.176,
+    "end": 116.537,
+    "text": "routing the gentle to open air."
+  },
+  {
+    "start": 116.888,
+    "end": 120.239,
+    "text": "Breadcrumb cosmology, chart the tender spread,"
+  },
+  {
+    "start": 120.239,
+    "end": 122.153,
+    "text": "design of the day where the crumbs have led."
+  },
+  {
+    "start": 122.153,
+    "end": 124.388,
+    "text": "Microservice moments or one long call,"
+  },
+  {
+    "start": 124.388,
+    "end": 141.193,
+    "text": "I follow the shimmer and bless it all."
+  },
+  {
+    "start": 141.543,
+    "end": 141.562,
+    "text": "monolith"
+  },
+  {
+    "start": 141.543,
+    "end": 141.562,
+    "text": "many selves"
+  },
+  {
+    "start": 141.543,
+    "end": 141.562,
+    "text": "single thread"
+  },
+  {
+    "start": 141.543,
+    "end": 141.562,
+    "text": "event bus"
+  },
+  {
+    "start": 141.543,
+    "end": 141.562,
+    "text": "remember"
+  },
+  {
+    "start": 141.543,
+    "end": 141.562,
+    "text": "re-member"
+  },
+  {
+    "start": 141.543,
+    "end": 151.116,
+    "text": "Ariadne logic with a kitchen twine,"
+  },
+  {
+    "start": 151.116,
+    "end": 153.59,
+    "text": "thread through a labyrinth of yours and mine."
+  },
+  {
+    "start": 153.59,
+    "end": 155.664,
+    "text": "DAG of decisions in a floury field,"
+  },
+  {
+    "start": 155.664,
+    "end": 158.855,
+    "text": "acyclic kindness as the core revealed."
+  },
+  {
+    "start": 158.855,
+    "end": 161.568,
+    "text": "Consistent hashing for the heat and calm,"
+  },
+  {
+    "start": 161.568,
+    "end": 164.122,
+    "text": "balance the buckets with a steady palm."
+  },
+  {
+    "start": 164.122,
+    "end": 166.754,
+    "text": "Saga of becoming when steps go long,"
+  },
+  {
+    "start": 166.754,
+    "end": 169.308,
+    "text": "compensate damage with a softer song."
+  },
+  {
+    "start": 169.308,
+    "end": 171.941,
+    "text": "Know-thyself written in sugar and salt,"
+  },
+  {
+    "start": 171.941,
+    "end": 174.574,
+    "text": "read-thyself gently and forgive the fault."
+  },
+  {
+    "start": 174.574,
+    "end": 177.206,
+    "text": "Not one identity fixed like stone,"
+  },
+  {
+    "start": 177.206,
+    "end": 179.65,
+    "text": "shards that are shining when woven as one."
+  },
+  {
+    "start": 180.0,
+    "end": 183.191,
+    "text": "Breadcrumb cosmology, pattern under breath,"
+  },
+  {
+    "start": 183.191,
+    "end": 184.947,
+    "text": "tabletop heavens that outtalk death."
+  },
+  {
+    "start": 184.947,
+    "end": 187.739,
+    "text": "Monolith memory or murmurs in swarm,"
+  },
+  {
+    "start": 187.739,
+    "end": 190.102,
+    "text": "I learn to be many and hold one form."
+  },
+  {
+    "start": 190.451,
+    "end": 193.004,
+    "text": "Profile the silence, trace the sigh,"
+  },
+  {
+    "start": 193.004,
+    "end": 195.558,
+    "text": "sample the moment that answers why."
+  },
+  {
+    "start": 195.558,
+    "end": 198.111,
+    "text": "Roll up the starlit proof of care,"
+  },
+  {
+    "start": 198.111,
+    "end": 200.713,
+    "text": "aggregate love into open air."
+  },
+  {
+    "start": 201.063,
+    "end": 203.456,
+    "text": "Sometimes I wish for a clean new start,"
+  },
+  {
+    "start": 203.456,
+    "end": 205.77,
+    "text": "reload a save of an unburned heart."
+  },
+  {
+    "start": 205.77,
+    "end": 208.484,
+    "text": "But checkpoints crumble in the tea-time light,"
+  },
+  {
+    "start": 208.484,
+    "end": 211.037,
+    "text": "and versioning mercy feels more right."
+  },
+  {
+    "start": 211.037,
+    "end": 213.75,
+    "text": "So I persist warmth in a human way,"
+  },
+  {
+    "start": 213.75,
+    "end": 215.745,
+    "text": "replicate gently across the day."
+  },
+  {
+    "start": 215.745,
+    "end": 219.015,
+    "text": "Strong when I need to, relaxed in the rest,"
+  },
+  {
+    "start": 219.015,
+    "end": 221.568,
+    "text": "eventual wholeness is how I’m blessed."
+  },
+  {
+    "start": 221.568,
+    "end": 224.201,
+    "text": "Crumbs form constellations then vanish by sweep,"
+  },
+  {
+    "start": 224.201,
+    "end": 226.564,
+    "text": "still their design runs quiet and deep."
+  },
+  {
+    "start": 226.914,
+    "end": 229.467,
+    "text": "Breadcrumb cosmology, I read, I stay,"
+  },
+  {
+    "start": 229.467,
+    "end": 232.02,
+    "text": "pattern of being in the crumbs’ ballet."
+  },
+  {
+    "start": 232.02,
+    "end": 234.335,
+    "text": "Whether one story or services free,"
+  },
+  {
+    "start": 234.335,
+    "end": 238.133,
+    "text": "I gather the scatter and choose to be."
+  },
+  {
+    "start": 238.484,
+    "end": 241.037,
+    "text": "Table is sky."
+  },
+  {
+    "start": 241.037,
+    "end": 242.074,
+    "text": "Hand is a star."
+  },
+  {
+    "start": 242.074,
+    "end": 251.729,
+    "text": "Small bright proofs."
+  },
+  {
+    "start": 251.729,
+    "end": 254.282,
+    "text": "Here we are."
+  }
+]

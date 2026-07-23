@@ -4,5 +4,486 @@
     "folder": "bells-of-lyonesse",
     "audioFile": "the-bells-of-lyonesse.mp3",
     "scene": "bellsOfLyonesse"
+  },
+  {
+    "id": "glitch-witch-lint",
+    "folder": "glitch witch",
+    "audioFile": "Lint.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "Lint",
+    "artist": "Dancing Salamanders",
+    "album": "Glitch Witch",
+    "lyricsFile": "Lint.json"
+  },
+  {
+    "id": "glitch-witch-bless-this-mess-and-all-its-variables",
+    "folder": "glitch witch",
+    "audioFile": "bless this mess (and all its variables).mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "bless this mess (and all its variables)",
+    "artist": "Dancing Salamanders",
+    "album": "Glitch Witch",
+    "lyricsFile": "bless this mess (and all its variables).json"
+  },
+  {
+    "id": "glitch-witch-breadcrumb-cosmology",
+    "folder": "glitch witch",
+    "audioFile": "breadcrumb cosmology.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "breadcrumb cosmology",
+    "artist": "Dancing Salamanders",
+    "album": "Glitch Witch",
+    "lyricsFile": "breadcrumb cosmology.json"
+  },
+  {
+    "id": "glitch-witch-checksum-of-the-heart",
+    "folder": "glitch witch",
+    "audioFile": "checksum of the heart.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "checksum of the heart",
+    "artist": "Dancing Salamanders",
+    "album": "Glitch Witch",
+    "lyricsFile": "checksum of the heart.json"
+  },
+  {
+    "id": "glitch-witch-half-hymn-whole-hashmap",
+    "folder": "glitch witch",
+    "audioFile": "half hymn whole hashmap.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "half hymn whole hashmap",
+    "artist": "Dancing Salamanders",
+    "album": "Glitch Witch",
+    "lyricsFile": "half hymn whole hashmap.json"
+  },
+  {
+    "id": "glitch-witch-kettle-logic",
+    "folder": "glitch witch",
+    "audioFile": "kettle logic.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "kettle logic",
+    "artist": "Dancing Salamanders",
+    "album": "Glitch Witch",
+    "lyricsFile": "kettle logic.json"
+  },
+  {
+    "id": "glitch-witch-kindly-demons-of-the-pantry",
+    "folder": "glitch witch",
+    "audioFile": "kindly demons of the pantry.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "kindly demons of the pantry",
+    "artist": "Dancing Salamanders",
+    "album": "Glitch Witch",
+    "lyricsFile": "kindly demons of the pantry.json"
+  },
+  {
+    "id": "glitch-witch-leaven-rise",
+    "folder": "glitch witch",
+    "audioFile": "leaven rise.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "leaven rise",
+    "artist": "Dancing Salamanders",
+    "album": "Glitch Witch",
+    "lyricsFile": "leaven rise.json"
+  },
+  {
+    "id": "glitch-witch-magpie-logging",
+    "folder": "glitch witch",
+    "audioFile": "magpie logging.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "magpie logging",
+    "artist": "Dancing Salamanders",
+    "album": "Glitch Witch",
+    "lyricsFile": "magpie logging.json"
+  },
+  {
+    "id": "glitch-witch-meandering-migration",
+    "folder": "glitch witch",
+    "audioFile": "meandering migration.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "meandering migration",
+    "artist": "Dancing Salamanders",
+    "album": "Glitch Witch",
+    "lyricsFile": "meandering migration.json"
+  },
+  {
+    "id": "glitch-witch-moss-matrix",
+    "folder": "glitch witch",
+    "audioFile": "moss matrix.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "moss matrix",
+    "artist": "Dancing Salamanders",
+    "album": "Glitch Witch",
+    "lyricsFile": "moss matrix.json"
+  },
+  {
+    "id": "glitch-witch-patch-day-at-the-cottage",
+    "folder": "glitch witch",
+    "audioFile": "patch day at the cottage.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "patch day at the cottage",
+    "artist": "Dancing Salamanders",
+    "album": "Glitch Witch",
+    "lyricsFile": "patch day at the cottage.json"
+  },
+  {
+    "id": "threads-between-the-stars-everyone-in-this-room-is-me",
+    "folder": "threads between the stars",
+    "audioFile": "Everyone in This Room Is Me.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "Everyone in This Room Is Me",
+    "artist": "Dancing Salamanders",
+    "album": "Threads Between the Stars",
+    "lyricsFile": "Everyone in This Room Is Me.json"
+  },
+  {
+    "id": "threads-between-the-stars-foxes-in-the-garden",
+    "folder": "threads between the stars",
+    "audioFile": "Foxes in the garden.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "Foxes in the garden",
+    "artist": "Dancing Salamanders",
+    "album": "Threads Between the Stars",
+    "lyricsFile": "Foxes in the garden.json"
+  },
+  {
+    "id": "threads-between-the-stars-little-sun-over-the-sea",
+    "folder": "threads between the stars",
+    "audioFile": "Little Sun over the Sea.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "Little Sun over the Sea",
+    "artist": "Dancing Salamanders",
+    "album": "Threads Between the Stars",
+    "lyricsFile": "Little Sun over the Sea.json"
+  },
+  {
+    "id": "threads-between-the-stars-polaroid",
+    "folder": "threads between the stars",
+    "audioFile": "Polaroid.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "Polaroid",
+    "artist": "Dancing Salamanders",
+    "album": "Threads Between the Stars",
+    "lyricsFile": "Polaroid.json"
+  },
+  {
+    "id": "threads-between-the-stars-silver-salt",
+    "folder": "threads between the stars",
+    "audioFile": "Silver salt.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "Silver salt",
+    "artist": "Dancing Salamanders",
+    "album": "Threads Between the Stars"
+  },
+  {
+    "id": "threads-between-the-stars-tales-for-the-ones-who-stayed-awake",
+    "folder": "threads between the stars",
+    "audioFile": "Tales for the Ones Who Stayed Awake.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "Tales for the Ones Who Stayed Awake",
+    "artist": "Dancing Salamanders",
+    "album": "Threads Between the Stars",
+    "lyricsFile": "Tales for the Ones Who Stayed Awake.json"
+  },
+  {
+    "id": "threads-between-the-stars-the-astronomer",
+    "folder": "threads between the stars",
+    "audioFile": "The Astronomer.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "The Astronomer",
+    "artist": "Dancing Salamanders",
+    "album": "Threads Between the Stars",
+    "lyricsFile": "The Astronomer.json"
+  },
+  {
+    "id": "threads-between-the-stars-the-brittle-brush",
+    "folder": "threads between the stars",
+    "audioFile": "The Brittle Brush.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "The Brittle Brush",
+    "artist": "Dancing Salamanders",
+    "album": "Threads Between the Stars",
+    "lyricsFile": "The Brittle Brush.json"
+  },
+  {
+    "id": "threads-between-the-stars-the-long-way-home",
+    "folder": "threads between the stars",
+    "audioFile": "The Long Way Home.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "The Long Way Home",
+    "artist": "Dancing Salamanders",
+    "album": "Threads Between the Stars",
+    "lyricsFile": "The Long Way Home.json"
+  },
+  {
+    "id": "threads-between-the-stars-the-right-and-perfectest-meanes",
+    "folder": "threads between the stars",
+    "audioFile": "The Right and Perfectest Meanes.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "The Right and Perfectest Meanes",
+    "artist": "Dancing Salamanders",
+    "album": "Threads Between the Stars",
+    "lyricsFile": "The Right and Perfectest Meanes.json"
+  },
+  {
+    "id": "threads-between-the-stars-threads-between-stars",
+    "folder": "threads between the stars",
+    "audioFile": "Threads between stars.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "Threads between stars",
+    "artist": "Dancing Salamanders",
+    "album": "Threads Between the Stars",
+    "lyricsFile": "Threads between stars.json"
+  },
+  {
+    "id": "threads-between-the-stars-tywod-skye",
+    "folder": "threads between the stars",
+    "audioFile": "Tywod Skye.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "Tywod Skye",
+    "artist": "Dancing Salamanders",
+    "album": "Threads Between the Stars",
+    "lyricsFile": "Tywod Skye.json"
+  },
+  {
+    "id": "threads-between-the-stars-apricot-epiclesis",
+    "folder": "threads between the stars",
+    "audioFile": "apricot epiclesis.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "apricot epiclesis",
+    "artist": "Dancing Salamanders",
+    "album": "Threads Between the Stars",
+    "lyricsFile": "apricot epiclesis.json"
+  },
+  {
+    "id": "threads-between-the-stars-black-ballons",
+    "folder": "threads between the stars",
+    "audioFile": "black ballons.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "black ballons",
+    "artist": "Dancing Salamanders",
+    "album": "Threads Between the Stars",
+    "lyricsFile": "black ballons.json"
+  },
+  {
+    "id": "threads-between-the-stars-honeycomb-geometry",
+    "folder": "threads between the stars",
+    "audioFile": "honeycomb geometry.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "honeycomb geometry",
+    "artist": "Dancing Salamanders",
+    "album": "Threads Between the Stars",
+    "lyricsFile": "honeycomb geometry.json"
+  },
+  {
+    "id": "threads-between-the-stars-real",
+    "folder": "threads between the stars",
+    "audioFile": "real.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "real",
+    "artist": "Dancing Salamanders",
+    "album": "Threads Between the Stars",
+    "lyricsFile": "real.json"
+  },
+  {
+    "id": "threads-between-the-stars-saltflower",
+    "folder": "threads between the stars",
+    "audioFile": "saltflower.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "saltflower",
+    "artist": "Dancing Salamanders",
+    "album": "Threads Between the Stars",
+    "lyricsFile": "saltflower.json"
+  },
+  {
+    "id": "threads-between-the-stars-sweet-heart",
+    "folder": "threads between the stars",
+    "audioFile": "sweet heart.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "sweet heart",
+    "artist": "Dancing Salamanders",
+    "album": "Threads Between the Stars",
+    "lyricsFile": "sweet heart.json"
+  },
+  {
+    "id": "threads-between-the-stars-well-ness",
+    "folder": "threads between the stars",
+    "audioFile": "well-ness.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "well-ness",
+    "artist": "Dancing Salamanders",
+    "album": "Threads Between the Stars",
+    "lyricsFile": "well-ness.json"
+  },
+  {
+    "id": "the-butterfly-archives-butterflies",
+    "folder": "the butterfly arcchives",
+    "audioFile": "Butterflies.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "Butterflies",
+    "artist": "Dancing Salamanders",
+    "album": "The Butterfly Archives"
+  },
+  {
+    "id": "the-butterfly-archives-flutter",
+    "folder": "the butterfly arcchives",
+    "audioFile": "Flutter.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "Flutter",
+    "artist": "Dancing Salamanders",
+    "album": "The Butterfly Archives"
+  },
+  {
+    "id": "the-butterfly-archives-miras-reel",
+    "folder": "the butterfly arcchives",
+    "audioFile": "Miras reel.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "Miras reel",
+    "artist": "Dancing Salamanders",
+    "album": "The Butterfly Archives"
+  },
+  {
+    "id": "the-butterfly-archives-our-elara",
+    "folder": "the butterfly arcchives",
+    "audioFile": "Our Elara.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "Our Elara",
+    "artist": "Dancing Salamanders",
+    "album": "The Butterfly Archives"
+  },
+  {
+    "id": "the-butterfly-archives-its-a-girl",
+    "folder": "the butterfly arcchives",
+    "audioFile": "its a girl.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "its a girl",
+    "artist": "Dancing Salamanders",
+    "album": "The Butterfly Archives"
+  },
+  {
+    "id": "the-butterfly-archives-on-the-road",
+    "folder": "the butterfly arcchives",
+    "audioFile": "on the road.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "on the road",
+    "artist": "Dancing Salamanders",
+    "album": "The Butterfly Archives"
+  },
+  {
+    "id": "the-butterfly-archives-over-the-river",
+    "folder": "the butterfly arcchives",
+    "audioFile": "over the river.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "over the river",
+    "artist": "Dancing Salamanders",
+    "album": "The Butterfly Archives"
+  },
+  {
+    "id": "the-butterfly-archives-under-cover-of-night",
+    "folder": "the butterfly arcchives",
+    "audioFile": "under cover of night.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "under cover of night",
+    "artist": "Dancing Salamanders",
+    "album": "The Butterfly Archives"
+  },
+  {
+    "id": "ordain-garden",
+    "folder": "Ordain/Garden",
+    "audioFile": "Garden.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "Garden",
+    "artist": "Dancing Salamanders",
+    "album": "Ordain",
+    "lyricsFile": "Garden.json"
+  },
+  {
+    "id": "ordain-geometry-of-falling",
+    "folder": "Ordain/Geometry of Falling",
+    "audioFile": "Geometry of Falling.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "Geometry of Falling",
+    "artist": "Dancing Salamanders",
+    "album": "Ordain",
+    "lyricsFile": "Geometry of Falling.json"
+  },
+  {
+    "id": "ordain-rain-on-the-roof-of-the-world",
+    "folder": "Ordain/Rain on the Roof of the World",
+    "audioFile": "Rain on the Roof of the World.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "Rain on the Roof of the World",
+    "artist": "Dancing Salamanders",
+    "album": "Ordain",
+    "lyricsFile": "Rain on the Roof of the World.json"
+  },
+  {
+    "id": "ordain-adore",
+    "folder": "Ordain/adore",
+    "audioFile": "adore.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "adore",
+    "artist": "Dancing Salamanders",
+    "album": "Ordain",
+    "lyricsFile": "adore.json"
+  },
+  {
+    "id": "ordain-glass-house",
+    "folder": "Ordain/glass house",
+    "audioFile": "glass house.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "glass house",
+    "artist": "Dancing Salamanders",
+    "album": "Ordain",
+    "lyricsFile": "glass house.json"
+  },
+  {
+    "id": "ordain-ledger",
+    "folder": "Ordain/ledger",
+    "audioFile": "ledger.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "ledger",
+    "artist": "Dancing Salamanders",
+    "album": "Ordain",
+    "lyricsFile": "ledger.json"
+  },
+  {
+    "id": "ordain-ling-a-long",
+    "folder": "Ordain/ling-a-long",
+    "audioFile": "ling-a-long.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "ling-a-long",
+    "artist": "Dancing Salamanders",
+    "album": "Ordain",
+    "lyricsFile": "ling-a-long.json"
+  },
+  {
+    "id": "ordain-review",
+    "folder": "Ordain/review",
+    "audioFile": "review.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "review",
+    "artist": "Dancing Salamanders",
+    "album": "Ordain",
+    "lyricsFile": "review.json"
+  },
+  {
+    "id": "ordain-threads",
+    "folder": "Ordain/threads",
+    "audioFile": "threads.mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "threads",
+    "artist": "Dancing Salamanders",
+    "album": "Ordain",
+    "lyricsFile": "threads.json"
+  },
+  {
+    "id": "ordain-up-and-at-it",
+    "folder": "Ordain/up (and at it)",
+    "audioFile": "up (and at it).mp3",
+    "scene": "bellsOfLyonesse",
+    "title": "up (and at it)",
+    "artist": "Dancing Salamanders",
+    "album": "Ordain",
+    "lyricsFile": "up (and at it).json"
   }
 ]

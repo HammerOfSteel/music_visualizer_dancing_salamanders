@@ -1,0 +1,387 @@
+1
+00:00:00,000 --> 00:00:00,020
+## [Verse 1]
+
+2
+00:00:00,239 --> 00:00:02,153
+I opened up the dome at half past ten precisely,
+
+3
+00:00:02,153 --> 00:00:26,089
+The seeing index: excellent. No cloud. The air was still and nicely
+
+4
+00:00:26,089 --> 00:00:33,350
+Quiet — so I ran calibration, each alignment checked in turn,
+
+5
+00:00:33,350 --> 00:00:40,451
+And wrote the date and time and coordinates in the column marked Confirm.
+
+6
+00:00:40,451 --> 00:00:47,552
+I swept the arc I always sweep at the beginning of the night:
+
+7
+00:00:47,552 --> 00:00:52,420
+The sky returned each reference point exactly at its right.
+
+8
+00:00:52,420 --> 00:00:54,862
+## [Pre-chorus]
+
+9
+00:00:55,213 --> 00:01:01,835
+The Pleiades: present. Virgo's edge: precise.
+
+10
+00:01:01,835 --> 00:01:09,334
+I checked the catalog against the open field, then checked it twice.
+
+11
+00:01:09,334 --> 00:01:16,037
+A hundred fixed coordinates exactly where they stood —
+
+12
+00:01:16,037 --> 00:01:22,579
+The sky was doing what the sky has always understood.
+
+13
+00:01:22,579 --> 00:01:22,599
+## [Chorus]
+
+14
+00:01:22,899 --> 00:01:26,968
+And then I found the coordinate.
+
+15
+00:01:26,968 --> 00:01:30,478
+The gap in the catalog.
+
+16
+00:01:30,478 --> 00:01:37,340
+The sky was clear. The seeing: exceptional.
+
+17
+00:01:37,340 --> 00:01:41,728
+I checked the calculation, checked the log.
+
+18
+00:01:41,728 --> 00:01:45,399
+*Not present at the stated position.*
+
+19
+00:01:45,399 --> 00:01:48,031
+*Magnitude: nil. Conditions: ideal.*
+
+20
+00:01:48,031 --> 00:01:53,936
+I looked at everything else, carefully.
+
+21
+00:01:53,936 --> 00:01:59,441
+That is what you do. That is what is real.
+
+22
+00:01:59,441 --> 00:02:00,000
+I logged the absence.
+
+23
+00:02:00,000 --> 00:02:00,956
+I logged it like the rest.
+
+24
+00:02:00,956 --> 00:02:02,233
+With the same hand.
+
+25
+00:02:02,233 --> 00:02:04,069
+With the same hand.
+
+26
+00:02:04,069 --> 00:02:04,149
+## [Verse 2]
+
+27
+00:02:04,149 --> 00:02:27,048
+At two I tracked the double star in Cygnus through the lens and found
+
+28
+00:02:27,048 --> 00:02:34,149
+Its separation to the arc-minute, which I logged and wrote down.
+
+29
+00:02:34,149 --> 00:02:38,138
+The Andromeda was rising; I photographed her face —
+
+30
+00:02:38,138 --> 00:02:45,159
+Two and a half million years of light, arriving at this place.
+
+31
+00:02:45,159 --> 00:02:49,467
+The light that left before the instruments I work with had a name,
+
+32
+00:02:49,467 --> 00:02:57,686
+Still crossing all that dark to find the dome, to find the frame.
+
+33
+00:02:57,686 --> 00:02:59,441
+## [Pre-chorus]
+
+34
+00:02:59,441 --> 00:03:05,984
+I noted every object in the sweep. I held the instrument still.
+
+35
+00:03:05,984 --> 00:03:13,085
+The protocol continued. I continued. I was thorough. I was careful.
+
+36
+00:03:13,085 --> 00:03:17,313
+The sky does not renegotiate the scope of what you're given —
+
+37
+00:03:17,313 --> 00:03:26,888
+You calibrate, you log, you sweep, and you keep on looking, keep on living.
+
+38
+00:03:26,888 --> 00:03:27,366
+## [Chorus]
+
+39
+00:03:27,366 --> 00:03:31,037
+And I found the coordinate.
+
+40
+00:03:31,037 --> 00:03:34,548
+The gap in the catalog.
+
+41
+00:03:34,548 --> 00:03:41,330
+The sky was clear. The seeing: exceptional.
+
+42
+00:03:41,330 --> 00:03:41,741
+I checked the calculation, checked the log.
+
+43
+00:03:41,741 --> 00:03:44,181
+The night held still. I held still.
+
+44
+00:03:44,181 --> 00:03:45,717
+I did not stop the log.
+
+45
+00:03:45,717 --> 00:03:47,633
+*Not present at the stated position.*
+
+46
+00:03:47,633 --> 00:03:48,882
+*Magnitude: nil. Conditions: ideal.*
+
+47
+00:03:48,882 --> 00:03:51,955
+*To be reviewed. Assigned a number. Filed.*
+
+48
+00:03:52,305 --> 00:03:54,653
+And I looked at everything else,
+
+49
+00:03:54,653 --> 00:03:54,674
+I looked at everything else, carefully.
+
+50
+00:03:54,653 --> 00:03:56,104
+because the sky is still full.
+
+51
+00:03:56,104 --> 00:03:57,556
+Because the sky is still full.
+
+52
+00:03:57,556 --> 00:03:58,644
+And that is what you do.
+
+53
+00:03:58,644 --> 00:04:06,383
+That is what you do. That is what is
+
+54
+00:04:06,383 --> 00:04:09,414
+real.
+
+55
+00:04:09,414 --> 00:04:12,127
+I logged the absence.
+
+56
+00:04:12,127 --> 00:04:15,877
+I logged it like the rest.
+
+57
+00:04:15,877 --> 00:04:17,153
+With the same hand.
+
+58
+00:04:17,153 --> 00:04:17,632
+With the same hand.
+
+59
+00:04:17,632 --> 00:04:24,254
+## [Bridge]
+
+60
+00:04:24,254 --> 00:04:27,925
+You should understand the nature of the light.
+
+61
+00:04:27,925 --> 00:04:31,596
+The light that reaches the instrument is old.
+
+62
+00:04:31,596 --> 00:04:33,988
+By the time the light arrives here,
+
+63
+00:04:33,988 --> 00:04:36,622
+the source is what it was —
+
+64
+00:04:36,622 --> 00:04:40,213
+a very long time ago.
+
+65
+00:04:40,213 --> 00:04:43,644
+What you are seeing when you look
+
+66
+00:04:43,644 --> 00:04:47,793
+is the record of the thing.
+
+67
+00:04:47,793 --> 00:04:48,350
+Not the thing.
+
+68
+00:04:48,350 --> 00:04:52,579
+This is standard.
+
+69
+00:04:52,579 --> 00:04:53,377
+This is noted in the protocol.
+
+70
+00:04:53,377 --> 00:04:53,617
+You note it.
+
+71
+00:04:53,617 --> 00:04:54,415
+You continue.
+
+72
+00:04:54,415 --> 00:04:57,605
+You are here to sweep the sky.
+
+73
+00:04:57,605 --> 00:04:58,245
+The sky is full.
+
+74
+00:04:58,245 --> 00:04:59,440
+You look at what is there.
+
+75
+00:04:59,440 --> 00:04:59,600
+## [Final Chorus]
+
+76
+00:04:59,600 --> 00:05:01,596
+So I noted the coordinate.
+
+77
+00:05:01,596 --> 00:05:23,536
+The gap in the catalog.
+
+78
+00:05:23,536 --> 00:05:26,809
+The night held still. I held still.
+
+79
+00:05:26,809 --> 00:05:31,596
+I did not stop the log.
+
+80
+00:05:31,596 --> 00:05:34,627
+*Not present at the stated position.*
+
+81
+00:05:34,627 --> 00:05:38,855
+*To be reviewed. Assigned a number. Filed.*
+
+82
+00:05:38,855 --> 00:05:41,250
+And I looked at everything else,
+
+83
+00:05:41,250 --> 00:05:43,483
+carefully —
+
+84
+00:05:43,483 --> 00:05:46,995
+because the sky is still full.
+
+85
+00:05:46,995 --> 00:05:48,750
+Because the sky is still full.
+
+86
+00:05:48,750 --> 00:05:53,377
+And that is what you do.
+
+87
+00:05:53,377 --> 00:05:56,649
+That is what you do
+
+88
+00:05:56,649 --> 00:05:58,723
+when the sky is still full.
+
+89
+00:05:58,723 --> 00:06:00,846
+## [Outro]
+
+90
+00:06:01,197 --> 00:06:04,228
+I closed the dome at first light.
+
+91
+00:06:04,228 --> 00:06:08,536
+I filed the conditions as: clear.
+
+92
+00:06:08,536 --> 00:06:14,521
+I wrote the night's total objects: logged.
+
+93
+00:06:14,521 --> 00:06:19,149
+Everything listed — present.
+
+94
+00:06:19,149 --> 00:06:23,059
+One gap.
+
+95
+00:06:23,059 --> 00:06:24,415
+*Position: clear.*
+
+96
+00:06:24,415 --> 00:06:30,956
+*Expected object: not found.*
+
+97
+00:06:30,956 --> 00:06:34,009
+*Not found.*

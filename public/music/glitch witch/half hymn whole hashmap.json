@@ -1,0 +1,327 @@
+[
+  {
+    "start": 10.292,
+    "end": 12.766,
+    "text": "Label the jars."
+  },
+  {
+    "start": 12.766,
+    "end": 15.319,
+    "text": "Name what you keep."
+  },
+  {
+    "start": 15.319,
+    "end": 17.952,
+    "text": "Sing while you sort."
+  },
+  {
+    "start": 17.952,
+    "end": 20.873,
+    "text": "Store what you need."
+  },
+  {
+    "start": 21.222,
+    "end": 23.856,
+    "text": "Pantry of stars with a shelf for the rain,"
+  },
+  {
+    "start": 23.856,
+    "end": 26.41,
+    "text": "keys on the lids so the heart can explain."
+  },
+  {
+    "start": 26.41,
+    "end": 28.803,
+    "text": "Salt for the memory, sugar for grace,"
+  },
+  {
+    "start": 28.803,
+    "end": 30.878,
+    "text": "values in rows with a reachable place."
+  },
+  {
+    "start": 30.878,
+    "end": 33.511,
+    "text": "Collisions arrive with a clink and a grin,"
+  },
+  {
+    "start": 33.511,
+    "end": 36.542,
+    "text": "lace a small ribbon and chain them in."
+  },
+  {
+    "start": 36.542,
+    "end": 39.095,
+    "text": "Load factor climbs when the seasons expand,"
+  },
+  {
+    "start": 39.095,
+    "end": 41.649,
+    "text": "rehash the cupboard with steadier hands."
+  },
+  {
+    "start": 41.649,
+    "end": 44.201,
+    "text": "Index by scent and the year it was found,"
+  },
+  {
+    "start": 44.201,
+    "end": 46.755,
+    "text": "order the thunder, keep joy near the ground."
+  },
+  {
+    "start": 46.755,
+    "end": 49.387,
+    "text": "Bloom filter hums at the door like a friend,"
+  },
+  {
+    "start": 49.387,
+    "end": 51.591,
+    "text": "no to the clutter that never should blend."
+  },
+  {
+    "start": 51.941,
+    "end": 54.573,
+    "text": "Hold what you hold with a patient map,"
+  },
+  {
+    "start": 54.573,
+    "end": 56.618,
+    "text": "name every echo, loosen the trap."
+  },
+  {
+    "start": 56.968,
+    "end": 59.201,
+    "text": "Half hymn, whole hashmap,"
+  },
+  {
+    "start": 59.201,
+    "end": 61.755,
+    "text": "label the love, lay down the cap."
+  },
+  {
+    "start": 61.755,
+    "end": 63.75,
+    "text": "Place it on shelves the soul can track,"
+  },
+  {
+    "start": 63.75,
+    "end": 66.941,
+    "text": "teach your hands which jars to stack."
+  },
+  {
+    "start": 66.941,
+    "end": 69.334,
+    "text": "Half hymn, whole hashmap,"
+  },
+  {
+    "start": 69.334,
+    "end": 77.442,
+    "text": "hum while you file what calls you back."
+  },
+  {
+    "start": 77.793,
+    "end": 80.346,
+    "text": "Back up the warmth to a distant sky,"
+  },
+  {
+    "start": 80.346,
+    "end": 82.899,
+    "text": "S3 buckets where lullabies lie."
+  },
+  {
+    "start": 82.899,
+    "end": 85.293,
+    "text": "Version the days with a tidy tag,"
+  },
+  {
+    "start": 85.293,
+    "end": 88.004,
+    "text": "roll to a point where the storms unflag."
+  },
+  {
+    "start": 88.004,
+    "end": 90.399,
+    "text": "Redis for sparks that you need real fast,"
+  },
+  {
+    "start": 90.399,
+    "end": 92.552,
+    "text": "Vault for the names that were never to pass."
+  },
+  {
+    "start": 92.552,
+    "end": 94.947,
+    "text": "Terraform towels on pegs of light,"
+  },
+  {
+    "start": 94.947,
+    "end": 98.218,
+    "text": "Helm charts simmer for soups at night."
+  },
+  {
+    "start": 98.218,
+    "end": 100.691,
+    "text": "K8s cluster of chores that play,"
+  },
+  {
+    "start": 100.691,
+    "end": 103.323,
+    "text": "autoscale kindness when guests will stay."
+  },
+  {
+    "start": 103.323,
+    "end": 105.718,
+    "text": "Observability lives in the pan,"
+  },
+  {
+    "start": 105.718,
+    "end": 107.84,
+    "text": "golden three signals in one clean plan."
+  },
+  {
+    "start": 108.191,
+    "end": 110.346,
+    "text": "Half hymn, whole hashmap,"
+  },
+  {
+    "start": 110.346,
+    "end": 112.899,
+    "text": "keys like prayers in a cotton wrap."
+  },
+  {
+    "start": 112.899,
+    "end": 115.451,
+    "text": "Write what you mean on the circle’s flap,"
+  },
+  {
+    "start": 115.451,
+    "end": 118.004,
+    "text": "read it again when the winds clap."
+  },
+  {
+    "start": 118.004,
+    "end": 120.478,
+    "text": "Half hymn, whole hashmap,"
+  },
+  {
+    "start": 120.478,
+    "end": 128.106,
+    "text": "store it with care, no need to snap."
+  },
+  {
+    "start": 128.456,
+    "end": 131.169,
+    "text": "TTL on the worry so it fades on its own."
+  },
+  {
+    "start": 131.169,
+    "end": 133.883,
+    "text": "LRU for the grudges, let the oldest be gone."
+  },
+  {
+    "start": 133.883,
+    "end": 136.914,
+    "text": "Circuit breaker on rage till the rhythm is grown."
+  },
+  {
+    "start": 136.914,
+    "end": 141.99,
+    "text": "Backoff and breathe, then come back home."
+  },
+  {
+    "start": 142.34,
+    "end": 144.734,
+    "text": "Schema for mercy with nullable fear,"
+  },
+  {
+    "start": 144.734,
+    "end": 147.366,
+    "text": "types that accept every tear."
+  },
+  {
+    "start": 147.366,
+    "end": 149.84,
+    "text": "Map of the kitchen to map of the sky,"
+  },
+  {
+    "start": 149.84,
+    "end": 152.313,
+    "text": "same quiet rules for a life lived wise."
+  },
+  {
+    "start": 152.313,
+    "end": 154.467,
+    "text": "Consistency happens in hours, not ticks,"
+  },
+  {
+    "start": 154.467,
+    "end": 157.659,
+    "text": "stir till the heart finds a stable mix."
+  },
+  {
+    "start": 157.659,
+    "end": 160.133,
+    "text": "Strong where you must, eventual where kind,"
+  },
+  {
+    "start": 160.133,
+    "end": 162.686,
+    "text": "choose the domain that softens the mind."
+  },
+  {
+    "start": 162.686,
+    "end": 165.159,
+    "text": "Garbage collect what was never your task,"
+  },
+  {
+    "start": 165.159,
+    "end": 167.712,
+    "text": "free up the memory behind the mask."
+  },
+  {
+    "start": 167.712,
+    "end": 170.265,
+    "text": "Store what you learn in a gentle tone,"
+  },
+  {
+    "start": 170.265,
+    "end": 172.31,
+    "text": "helping yourself is how help is grown."
+  },
+  {
+    "start": 172.659,
+    "end": 174.813,
+    "text": "Half hymn, whole hashmap,"
+  },
+  {
+    "start": 174.813,
+    "end": 177.287,
+    "text": "sing while you sort, no need to rush back."
+  },
+  {
+    "start": 177.287,
+    "end": 179.84,
+    "text": "Put down the pain in a labeled pack,"
+  },
+  {
+    "start": 179.84,
+    "end": 181.835,
+    "text": "fetch only the courage you lack."
+  },
+  {
+    "start": 181.835,
+    "end": 182.473,
+    "text": "Half hymn, whole hashmap,"
+  },
+  {
+    "start": 182.473,
+    "end": 187.5,
+    "text": "home is a table of keys and tact."
+  },
+  {
+    "start": 187.5,
+    "end": 189.973,
+    "text": "Query the light, let love enact."
+  }
+]

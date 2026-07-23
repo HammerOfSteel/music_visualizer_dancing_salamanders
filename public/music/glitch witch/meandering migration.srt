@@ -1,0 +1,279 @@
+1
+00:00:23,378 --> 00:00:26,568
+Breath warms the glass.
+
+2
+00:00:26,568 --> 00:00:31,356
+Feather writes light.
+
+3
+00:00:31,356 --> 00:00:34,468
+Winter loosens its latch.
+
+4
+00:00:34,468 --> 00:00:40,420
+I step back into bright.
+
+5
+00:00:40,771 --> 00:00:43,323
+Small wings sketch routes above the lane,
+
+6
+00:00:43,323 --> 00:00:45,478
+looping the chill out of my veins.
+
+7
+00:00:45,478 --> 00:00:47,633
+Footprints melt to a softer grid,
+
+8
+00:00:47,633 --> 00:00:49,786
+paths recompile from where they hid.
+
+9
+00:00:49,786 --> 00:00:51,941
+Cold start heart with a match and tea,
+
+10
+00:00:51,941 --> 00:00:54,255
+bootstrap dawn to a key of E.
+
+11
+00:00:54,255 --> 00:00:56,409
+Birdsong seeds the barren branch,
+
+12
+00:00:56,409 --> 00:00:58,564
+call it a patch for a longer chance.
+
+13
+00:00:58,564 --> 00:01:02,951
+I count slow threes with a palm on wood,
+
+14
+00:01:02,951 --> 00:01:05,155
+version the hush into something good.
+
+15
+00:01:05,504 --> 00:01:10,132
+Meandering migration, teach me the turn,
+
+16
+00:01:10,132 --> 00:01:13,802
+thaw me from pages that forgot how to learn.
+
+17
+00:01:13,802 --> 00:01:17,313
+I write myself out from winter’s line,
+
+18
+00:01:17,313 --> 00:01:19,149
+into a margin of yellow shine.
+
+19
+00:01:19,149 --> 00:01:22,021
+I remember you, daffodil, bright as a bell,
+
+20
+00:01:22,021 --> 00:01:41,537
+spring in the syllable where I dwell.
+
+21
+00:01:41,888 --> 00:01:44,043
+Schema of sleep sheds brittle brace,
+
+22
+00:01:44,043 --> 00:01:46,197
+fields allow sun in a gentler place.
+
+23
+00:01:46,197 --> 00:01:48,350
+Cache of sorrow clears by degrees,
+
+24
+00:01:48,350 --> 00:01:50,504
+warm cache builds on the southbound breeze.
+
+25
+00:01:50,504 --> 00:01:52,420
+Migrations run with a careful script,
+
+26
+00:01:52,420 --> 00:01:54,894
+rename the rooms where the light has slipped.
+
+27
+00:01:54,894 --> 00:01:57,766
+Seed data tucked in a pocket of soil,
+
+28
+00:01:57,766 --> 00:02:03,191
+hands for the work, time for the toil.
+
+29
+00:02:03,191 --> 00:02:07,899
+Checks on the roots, green health fine,
+
+30
+00:02:07,899 --> 00:02:10,102
+readiness probes in the crooked vine.
+
+31
+00:02:10,451 --> 00:02:15,080
+Meandering migration, give me your way,
+
+32
+00:02:15,080 --> 00:02:18,750
+curves over clocks, breath over sway.
+
+33
+00:02:18,750 --> 00:02:22,260
+I write myself out of the frost-bit prose,
+
+34
+00:02:22,260 --> 00:02:24,175
+into a stanza the robin knows.
+
+35
+00:02:24,175 --> 00:02:27,127
+I remember you, daffodil, tender and true,
+
+36
+00:02:27,127 --> 00:02:46,564
+gold in the center of everything blue.
+
+37
+00:02:46,914 --> 00:02:49,149
+State machine heart with a springward edge,
+
+38
+00:02:49,149 --> 00:02:51,302
+transition names on a meadow’s ledge.
+
+39
+00:02:51,302 --> 00:02:53,776
+Enter with water, exit with light,
+
+40
+00:02:53,776 --> 00:02:55,850
+guarded by kindness, validated right.
+
+41
+00:02:55,850 --> 00:02:58,004
+Garbage collector hums in the lane,
+
+42
+00:02:58,004 --> 00:03:00,159
+sweeps out the cruft of a colder brain.
+
+43
+00:03:00,159 --> 00:03:02,313
+Newtable mercy joins to the old,
+
+44
+00:03:02,313 --> 00:03:06,543
+foreign key laughter, stories hold.
+
+45
+00:03:06,543 --> 00:03:11,808
+Consistency model soft and kind,
+
+46
+00:03:11,808 --> 00:03:16,165
+eventually whole in a patient mind.
+
+47
+00:03:16,515 --> 00:03:20,346
+Meandering migration, widen my scope,
+
+48
+00:03:20,346 --> 00:03:24,973
+merge me with daylight, annotate hope.
+
+49
+00:03:24,973 --> 00:03:28,563
+I write myself out where the thaw begins,
+
+50
+00:03:28,563 --> 00:03:30,399
+into the chorus of tender winds.
+
+51
+00:03:30,399 --> 00:03:33,270
+I remember you, daffodil, wink of the sun,
+
+52
+00:03:33,270 --> 00:03:44,170
+proof that a winter can be undone.
+
+53
+00:03:44,520 --> 00:03:47,951
+Commit small changes to the budding day,
+
+54
+00:03:47,951 --> 00:03:53,776
+no squash of sorrow, let branches play.
+
+55
+00:03:53,776 --> 00:03:57,526
+Tag this release with a quiet ring,
+
+56
+00:03:57,526 --> 00:04:06,032
+changelog reads simply: became spring.
+
+57
+00:04:06,383 --> 00:04:09,015
+Swallows refactor the sky with threads,
+
+58
+00:04:09,015 --> 00:04:11,330
+weave back warmth where the gray once spread.
+
+59
+00:04:11,330 --> 00:04:13,324
+I run the loop till the lungs agree,
+
+60
+00:04:13,324 --> 00:04:15,479
+timers align with the willow tree.
+
+61
+00:04:15,479 --> 00:04:17,713
+Heartbeat ticks like a wooden clock,
+
+62
+00:04:17,713 --> 00:04:19,867
+three-step faith on a mossy rock.
+
+63
+00:04:19,867 --> 00:04:22,100
+Name the horizon a living file,
+
+64
+00:04:22,100 --> 00:04:27,576
+open for writing another mile.
+
+65
+00:04:27,925 --> 00:04:33,750
+Meandering migration, keep me in flow,
+
+66
+00:04:33,750 --> 00:04:37,420
+teach me the routes only wild things know.
+
+67
+00:04:37,420 --> 00:04:41,011
+I write myself out from winter’s hold,
+
+68
+00:04:41,011 --> 00:04:43,564
+into a script that blooms and unfolds.
+
+69
+00:04:43,564 --> 00:04:49,309
+I remember you, daffodil, always near,
+
+70
+00:04:49,309 --> 00:04:57,526
+spring is the function that calls you here.

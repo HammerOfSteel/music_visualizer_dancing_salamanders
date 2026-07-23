@@ -1,0 +1,259 @@
+1
+00:00:10,292 --> 00:00:12,766
+Label the jars.
+
+2
+00:00:12,766 --> 00:00:15,319
+Name what you keep.
+
+3
+00:00:15,319 --> 00:00:17,952
+Sing while you sort.
+
+4
+00:00:17,952 --> 00:00:20,873
+Store what you need.
+
+5
+00:00:21,222 --> 00:00:23,856
+Pantry of stars with a shelf for the rain,
+
+6
+00:00:23,856 --> 00:00:26,410
+keys on the lids so the heart can explain.
+
+7
+00:00:26,410 --> 00:00:28,803
+Salt for the memory, sugar for grace,
+
+8
+00:00:28,803 --> 00:00:30,878
+values in rows with a reachable place.
+
+9
+00:00:30,878 --> 00:00:33,511
+Collisions arrive with a clink and a grin,
+
+10
+00:00:33,511 --> 00:00:36,542
+lace a small ribbon and chain them in.
+
+11
+00:00:36,542 --> 00:00:39,095
+Load factor climbs when the seasons expand,
+
+12
+00:00:39,095 --> 00:00:41,649
+rehash the cupboard with steadier hands.
+
+13
+00:00:41,649 --> 00:00:44,201
+Index by scent and the year it was found,
+
+14
+00:00:44,201 --> 00:00:46,755
+order the thunder, keep joy near the ground.
+
+15
+00:00:46,755 --> 00:00:49,387
+Bloom filter hums at the door like a friend,
+
+16
+00:00:49,387 --> 00:00:51,591
+no to the clutter that never should blend.
+
+17
+00:00:51,941 --> 00:00:54,573
+Hold what you hold with a patient map,
+
+18
+00:00:54,573 --> 00:00:56,618
+name every echo, loosen the trap.
+
+19
+00:00:56,968 --> 00:00:59,201
+Half hymn, whole hashmap,
+
+20
+00:00:59,201 --> 00:01:01,755
+label the love, lay down the cap.
+
+21
+00:01:01,755 --> 00:01:03,750
+Place it on shelves the soul can track,
+
+22
+00:01:03,750 --> 00:01:06,941
+teach your hands which jars to stack.
+
+23
+00:01:06,941 --> 00:01:09,334
+Half hymn, whole hashmap,
+
+24
+00:01:09,334 --> 00:01:17,442
+hum while you file what calls you back.
+
+25
+00:01:17,793 --> 00:01:20,346
+Back up the warmth to a distant sky,
+
+26
+00:01:20,346 --> 00:01:22,899
+S3 buckets where lullabies lie.
+
+27
+00:01:22,899 --> 00:01:25,293
+Version the days with a tidy tag,
+
+28
+00:01:25,293 --> 00:01:28,004
+roll to a point where the storms unflag.
+
+29
+00:01:28,004 --> 00:01:30,399
+Redis for sparks that you need real fast,
+
+30
+00:01:30,399 --> 00:01:32,552
+Vault for the names that were never to pass.
+
+31
+00:01:32,552 --> 00:01:34,947
+Terraform towels on pegs of light,
+
+32
+00:01:34,947 --> 00:01:38,218
+Helm charts simmer for soups at night.
+
+33
+00:01:38,218 --> 00:01:40,691
+K8s cluster of chores that play,
+
+34
+00:01:40,691 --> 00:01:43,323
+autoscale kindness when guests will stay.
+
+35
+00:01:43,323 --> 00:01:45,718
+Observability lives in the pan,
+
+36
+00:01:45,718 --> 00:01:47,840
+golden three signals in one clean plan.
+
+37
+00:01:48,191 --> 00:01:50,346
+Half hymn, whole hashmap,
+
+38
+00:01:50,346 --> 00:01:52,899
+keys like prayers in a cotton wrap.
+
+39
+00:01:52,899 --> 00:01:55,451
+Write what you mean on the circle’s flap,
+
+40
+00:01:55,451 --> 00:01:58,004
+read it again when the winds clap.
+
+41
+00:01:58,004 --> 00:02:00,478
+Half hymn, whole hashmap,
+
+42
+00:02:00,478 --> 00:02:08,106
+store it with care, no need to snap.
+
+43
+00:02:08,456 --> 00:02:11,169
+TTL on the worry so it fades on its own.
+
+44
+00:02:11,169 --> 00:02:13,883
+LRU for the grudges, let the oldest be gone.
+
+45
+00:02:13,883 --> 00:02:16,914
+Circuit breaker on rage till the rhythm is grown.
+
+46
+00:02:16,914 --> 00:02:21,990
+Backoff and breathe, then come back home.
+
+47
+00:02:22,340 --> 00:02:24,734
+Schema for mercy with nullable fear,
+
+48
+00:02:24,734 --> 00:02:27,366
+types that accept every tear.
+
+49
+00:02:27,366 --> 00:02:29,840
+Map of the kitchen to map of the sky,
+
+50
+00:02:29,840 --> 00:02:32,313
+same quiet rules for a life lived wise.
+
+51
+00:02:32,313 --> 00:02:34,467
+Consistency happens in hours, not ticks,
+
+52
+00:02:34,467 --> 00:02:37,659
+stir till the heart finds a stable mix.
+
+53
+00:02:37,659 --> 00:02:40,133
+Strong where you must, eventual where kind,
+
+54
+00:02:40,133 --> 00:02:42,686
+choose the domain that softens the mind.
+
+55
+00:02:42,686 --> 00:02:45,159
+Garbage collect what was never your task,
+
+56
+00:02:45,159 --> 00:02:47,712
+free up the memory behind the mask.
+
+57
+00:02:47,712 --> 00:02:50,265
+Store what you learn in a gentle tone,
+
+58
+00:02:50,265 --> 00:02:52,310
+helping yourself is how help is grown.
+
+59
+00:02:52,659 --> 00:02:54,813
+Half hymn, whole hashmap,
+
+60
+00:02:54,813 --> 00:02:57,287
+sing while you sort, no need to rush back.
+
+61
+00:02:57,287 --> 00:02:59,840
+Put down the pain in a labeled pack,
+
+62
+00:02:59,840 --> 00:03:01,835
+fetch only the courage you lack.
+
+63
+00:03:01,835 --> 00:03:02,473
+Half hymn, whole hashmap,
+
+64
+00:03:02,473 --> 00:03:07,500
+home is a table of keys and tact.
+
+65
+00:03:07,500 --> 00:03:09,973
+Query the light, let love enact.

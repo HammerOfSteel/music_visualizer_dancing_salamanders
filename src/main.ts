@@ -581,7 +581,12 @@ async function loadTrack(index: number): Promise<void> {
   trackTitleEl.textContent = track.meta.title;
   trackAlbumEl.textContent = track.meta.album;
   trackArtistEl.textContent = track.meta.artist;
-  lyrics = (await fetch(trackLyricsUrl(track)).then((r) => r.json())) as LyricLine[];
+  // Instrumental tracks (or albums whose lyrics haven't been transcribed
+  // yet) simply have no lyrics.json — fall back to an empty line list
+  // instead of failing the whole track load.
+  lyrics = await fetch(trackLyricsUrl(track))
+    .then((r) => (r.ok ? (r.json() as Promise<LyricLine[]>) : []))
+    .catch(() => [] as LyricLine[]);
   lastLyricText = '';
 
   audio.src = trackAudioUrl(track);
@@ -592,18 +597,72 @@ async function loadTrack(index: number): Promise<void> {
   }
 }
 
+// Albums the user has manually expanded/collapsed in the track menu. The
+// album containing the currently-playing track is always force-expanded
+// (added back in `renderTrackMenu()` each render) so switching tracks
+// never leaves the active song hidden inside a collapsed group.
+const expandedAlbums = new Set<string>();
+
+/** Groups `tracks` by `meta.album` (preserving first-seen order) into a
+ * collapsible list — click an album header to expand/collapse its songs.
+ * Keeps the menu usable once there are many albums/songs instead of one
+ * long flat list. */
 function renderTrackMenu(): void {
   trackMenuEl.innerHTML = '';
-  tracks.forEach((track, i) => {
-    const item = document.createElement('button');
-    item.textContent = `${track.meta.title} — ${track.meta.artist}`;
-    if (i === currentTrackIndex) item.classList.add('active');
-    item.addEventListener('click', () => {
-      trackMenuEl.classList.remove('open');
-      void loadTrack(i);
-    });
-    trackMenuEl.appendChild(item);
+
+  const albums = new Map<string, { track: LoadedTrack; index: number }[]>();
+  tracks.forEach((track, index) => {
+    const album = track.meta.album;
+    if (!albums.has(album)) albums.set(album, []);
+    albums.get(album)!.push({ track, index });
   });
+
+  const currentAlbum = tracks[currentTrackIndex]?.meta.album;
+  if (currentAlbum) expandedAlbums.add(currentAlbum);
+
+  for (const [album, albumTracks] of albums) {
+    const isExpanded = expandedAlbums.has(album);
+    const isActiveAlbum = albumTracks.some(({ index }) => index === currentTrackIndex);
+
+    const header = document.createElement('button');
+    header.className = 'trackMenuAlbum';
+    if (isActiveAlbum) header.classList.add('active');
+
+    const chevron = document.createElement('span');
+    chevron.className = 'trackMenuAlbumChevron';
+    chevron.textContent = isExpanded ? '▾' : '▸';
+    header.appendChild(chevron);
+
+    const name = document.createElement('span');
+    name.className = 'trackMenuAlbumName';
+    name.textContent = album;
+    header.appendChild(name);
+
+    const count = document.createElement('span');
+    count.className = 'trackMenuAlbumCount';
+    count.textContent = String(albumTracks.length);
+    header.appendChild(count);
+
+    header.addEventListener('click', () => {
+      if (expandedAlbums.has(album)) expandedAlbums.delete(album);
+      else expandedAlbums.add(album);
+      renderTrackMenu();
+    });
+    trackMenuEl.appendChild(header);
+
+    if (!isExpanded) continue;
+    for (const { track, index } of albumTracks) {
+      const item = document.createElement('button');
+      item.className = 'trackMenuSong';
+      item.textContent = track.meta.title;
+      if (index === currentTrackIndex) item.classList.add('active');
+      item.addEventListener('click', () => {
+        trackMenuEl.classList.remove('open');
+        void loadTrack(index);
+      });
+      trackMenuEl.appendChild(item);
+    }
+  }
 }
 
 /** Rebuilds the settings menu's "Background Scene" list — one button per

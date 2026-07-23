@@ -1,0 +1,231 @@
+1
+00:00:24,335 --> 00:00:28,484
+Frame rate low, leaf by leaf, hill renders slow.
+
+2
+00:00:28,484 --> 00:00:31,277
+Big O patience, green code grows.
+
+3
+00:00:31,277 --> 00:00:33,750
+Pixel of lichen, voxel of stone,
+
+4
+00:00:33,750 --> 00:00:36,222
+texture maps woven with wind and loam.
+
+5
+00:00:36,222 --> 00:00:39,015
+Clock drift kindness, seconds in moss,
+
+6
+00:00:39,015 --> 00:00:41,488
+time gets fuzzy where roots cross.
+
+7
+00:00:41,488 --> 00:00:44,281
+I breathe on the bark, the shader replies,
+
+8
+00:00:44,281 --> 00:00:46,723
+soft-light filter on widening eyes.
+
+9
+00:00:47,073 --> 00:00:50,744
+Moss matrix, gentle engine, keep me kind.
+
+10
+00:00:50,744 --> 00:00:53,697
+Slow algorithm, hold the line.
+
+11
+00:00:53,697 --> 00:00:56,170
+No fast-forward on this hillside spine,
+
+12
+00:00:56,170 --> 00:01:08,905
+we wait, we warm, we learn to align.
+
+13
+00:01:09,254 --> 00:01:11,808
+Talk of a cheatcode, thumb-tap fate,
+
+14
+00:01:11,808 --> 00:01:14,600
+reload a save from a cleaner slate.
+
+15
+00:01:14,600 --> 00:01:17,552
+Konami craving in a tender ache,
+
+16
+00:01:17,552 --> 00:01:20,027
+rewind the path my heart once made.
+
+17
+00:01:20,027 --> 00:01:23,058
+But snapshots blur when the rain sets in,
+
+18
+00:01:23,058 --> 00:01:25,611
+checkpoints smear, we start again.
+
+19
+00:01:25,611 --> 00:01:28,644
+Eventual consistency under the pine,
+
+20
+00:01:28,644 --> 00:01:30,447
+two careful hands, one steady time.
+
+21
+00:01:30,798 --> 00:01:35,027
+Moss matrix, patient teacher, set the pace.
+
+22
+00:01:35,027 --> 00:01:38,697
+Slow convergence, softer trace.
+
+23
+00:01:38,697 --> 00:01:41,090
+Rollback dreams fade out of place,
+
+24
+00:01:41,090 --> 00:02:04,278
+commit to breath, commit to grace.
+
+25
+00:02:04,628 --> 00:02:08,456
+Anneal in the cold, then warm by noon,
+
+26
+00:02:08,456 --> 00:02:10,770
+energy landscape hums a tune.
+
+27
+00:02:10,770 --> 00:02:13,723
+Gradient descent on a grief-shaped hill,
+
+28
+00:02:13,723 --> 00:02:16,754
+step size smaller till feet stand still.
+
+29
+00:02:16,754 --> 00:02:19,548
+Entropy whispers but meaning stays,
+
+30
+00:02:19,548 --> 00:02:22,260
+stored in chlorophyll quiet ways.
+
+31
+00:02:22,260 --> 00:02:24,894
+Memory foam of a forest floor,
+
+32
+00:02:24,894 --> 00:02:27,336
+each fallen thought springs back no more.
+
+33
+00:02:27,686 --> 00:02:30,717
+I test my pulse on a ring of rings,
+
+34
+00:02:30,717 --> 00:02:33,032
+age in the trunk where the winter sings.
+
+35
+00:02:33,032 --> 00:02:36,383
+Asymptote love, never quite done,
+
+36
+00:02:36,383 --> 00:02:39,064
+closing the distance to everyone.
+
+37
+00:02:39,414 --> 00:02:42,605
+Moss matrix, long renderer of light.
+
+38
+00:02:42,605 --> 00:02:44,919
+Scene compiles through day to night.
+
+39
+00:02:44,919 --> 00:02:47,793
+Patience wins when pixels are bright,
+
+40
+00:02:47,793 --> 00:03:13,532
+green little proofs that we got it right.
+
+41
+00:03:13,883 --> 00:03:16,754
+Quantum of comfort, dew bead, dawn,
+
+42
+00:03:16,754 --> 00:03:19,467
+decohere sorrow till edges are gone.
+
+43
+00:03:19,467 --> 00:03:22,580
+Planck-small promises, tiny and true,
+
+44
+00:03:22,580 --> 00:03:25,133
+stitching the lattice from me to you.
+
+45
+00:03:25,133 --> 00:03:28,324
+Cache in the shade what the noon can’t hold,
+
+46
+00:03:28,324 --> 00:03:30,399
+release at twilight, slow and gold.
+
+47
+00:03:30,399 --> 00:03:33,909
+Markov of moments, state by state,
+
+48
+00:03:33,909 --> 00:03:36,751
+loving again rewrites fate.
+
+49
+00:03:37,100 --> 00:03:40,372
+Moss matrix, coder of the ground.
+
+50
+00:03:40,372 --> 00:03:43,245
+Low frequency mercy, round and round.
+
+51
+00:03:43,245 --> 00:03:45,956
+No secret code to skip the wound,
+
+52
+00:03:45,956 --> 00:03:54,145
+we grow, we glow, we stay earthbound.
+
+53
+00:03:54,495 --> 00:03:57,048
+So the hillside loads at a living speed,
+
+54
+00:03:57,048 --> 00:04:05,824
+moss is the engine, love the feed.
+
+55
+00:04:05,824 --> 00:04:08,936
+No restart key, no silver cheat,
+
+56
+00:04:08,936 --> 00:04:11,888
+continue is chosen with patient feet.
+
+57
+00:04:11,888 --> 00:04:17,153
+Strings breathe out and the forest agrees,
+
+58
+00:04:17,153 --> 00:04:19,947
+saved state now is a life that frees.
