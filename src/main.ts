@@ -181,6 +181,13 @@ orbitControls.minDistance = 15;
 orbitControls.maxDistance = 55;
 orbitControls.minPolarAngle = Math.PI * 0.15;
 orbitControls.maxPolarAngle = Math.PI * 0.6;
+// Zoom disabled: this app is embedded as an iframe on other pages (e.g.
+// dancingsalamanders.com), and OrbitControls' default mouse-wheel/pinch
+// zoom calls preventDefault() on wheel events, which hijacks the page's
+// scroll whenever the cursor is over the embed instead of letting the
+// parent page scroll normally. Drag-to-orbit/pan still work; only wheel
+// zoom (and touch pinch-zoom) is turned off so scrolling stays free.
+orbitControls.enableZoom = false;
 orbitControls.update();
 
 // --- Dev-only camera capture tool ------------------------------------

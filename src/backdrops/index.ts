@@ -80,7 +80,7 @@ export const backdropPresets: Record<string, BackdropPreset> = {
  * (3.13) can override this per-session; this is just the "what loads by
  * default" mapping. */
 export const sceneDefaultBackdrops: Record<string, string> = {
-  bellsOfLyonesse: 'summerMeadowDay',
+  bellsOfLyonesse: 'welshNightStreet',
 };
 
 export type { BackdropHandle, BackdropFactory, BackdropPreset } from './types';
