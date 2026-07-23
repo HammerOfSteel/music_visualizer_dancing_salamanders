@@ -1,0 +1,61 @@
+name: Deploy to Production
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    name: SSH Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.DEPLOY_HOST }}
+          username: ${{ secrets.DEPLOY_USER }}
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          script: |
+            set -e
+
+            REPO_URL="https://github.com/HammerOfSteel/music_visualizer_dancing_salamanders.git"
+            DEPLOY_DIR="/opt/music-visualizer"
+            DOMAIN="music.livslusths.se"
+            NGINX_SITE="/etc/nginx/sites-available/${DOMAIN}"
+            NGINX_ENABLED="/etc/nginx/sites-enabled/${DOMAIN}"
+
+            # ── 1. Clone or pull latest code ────────────────────────────
+            if [ ! -d "${DEPLOY_DIR}/.git" ]; then
+              sudo git clone "${REPO_URL}" "${DEPLOY_DIR}"
+            else
+              cd "${DEPLOY_DIR}"
+              sudo git fetch origin main
+              sudo git reset --hard origin/main
+            fi
+
+            cd "${DEPLOY_DIR}"
+
+            # ── 2. Build and start production container ──────────────────
+            sudo docker compose -f docker-compose.prod.yml up --build -d
+
+            # ── 3. Install nginx site config (first deploy only) ─────────
+            if [ ! -f "${NGINX_SITE}" ]; then
+              sudo cp "${DEPLOY_DIR}/deploy/nginx-music.conf" "${NGINX_SITE}"
+              sudo ln -sf "${NGINX_SITE}" "${NGINX_ENABLED}"
+              sudo nginx -t
+              sudo systemctl reload nginx
+              echo "Nginx site installed."
+            fi
+
+            # ── 4. Obtain TLS certificate (once per domain) ───────────────
+            if [ ! -f "/etc/letsencrypt/live/${DOMAIN}/fullchain.pem" ]; then
+              sudo certbot --nginx -d "${DOMAIN}" --non-interactive --agree-tos --email "[email protected]"
+              echo "Certificate obtained for ${DOMAIN}."
+            fi
+
+            # ── 5. Remove dangling images ──────────────────────────────────
+            sudo docker image prune -f
+
+            echo "Deployment complete: https://${DOMAIN}"
