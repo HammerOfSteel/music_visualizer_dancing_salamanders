@@ -49,6 +49,7 @@ const prevBtn = document.getElementById('prevBtn') as HTMLButtonElement;
 const nextBtn = document.getElementById('nextBtn') as HTMLButtonElement;
 const trackMenuBtn = document.getElementById('trackMenuBtn') as HTMLButtonElement;
 const trackMenuEl = document.getElementById('trackMenu')!;
+const albumSongMenuEl = document.getElementById('albumSongMenu')!;
 const settingsBtn = document.getElementById('settingsBtn') as HTMLButtonElement;
 const settingsMenuEl = document.getElementById('settingsMenu')!;
 const loadingOverlayEl = document.getElementById('loadingOverlay')!;
@@ -591,22 +592,46 @@ async function loadTrack(index: number): Promise<void> {
 
   audio.src = trackAudioUrl(track);
   renderTrackMenu();
+  renderAlbumSongMenu();
   if (wasPlaying) {
     ensureAudioGraph();
     void audio.play();
   }
 }
 
-// Albums the user has manually expanded/collapsed in the track menu. The
-// album containing the currently-playing track is always force-expanded
-// (added back in `renderTrackMenu()` each render) so switching tracks
-// never leaves the active song hidden inside a collapsed group.
-const expandedAlbums = new Set<string>();
+/** Returns the indices (into `tracks`) of every track belonging to `album`,
+ * in manifest order — used to keep next/prev/auto-advance playback inside
+ * one album's playlist instead of wandering into the next album. */
+function albumTrackIndices(album: string): number[] {
+  const result: number[] = [];
+  tracks.forEach((track, index) => {
+    if (track.meta.album === album) result.push(index);
+  });
+  return result;
+}
 
-/** Groups `tracks` by `meta.album` (preserving first-seen order) into a
- * collapsible list — click an album header to expand/collapse its songs.
- * Keeps the menu usable once there are many albums/songs instead of one
- * long flat list. */
+/** Steps to the next/previous song within the CURRENTLY PLAYING track's own
+ * album, wrapping around at either end — each album behaves like its own
+ * playlist rather than one long list spanning every album. */
+function stepWithinAlbum(delta: number): Promise<void> {
+  const current = tracks[currentTrackIndex];
+  if (!current) return Promise.resolve();
+  const indices = albumTrackIndices(current.meta.album);
+  if (indices.length === 0) return Promise.resolve();
+  const pos = indices.indexOf(currentTrackIndex);
+  const nextIndex = indices[(pos + delta + indices.length) % indices.length];
+  return loadTrack(nextIndex);
+}
+
+// The album whose songs are currently shown in the `#albumSongMenu` flyout,
+// or null when it's closed. Only one album's songs are shown at a time —
+// clicking an album header in `#trackMenu` opens the flyout beside it
+// instead of growing `#trackMenu` itself.
+let openAlbumMenuFor: string | null = null;
+
+/** Renders one row per album (title + song count) — clicking a row opens/
+ * closes that album's song list in the `#albumSongMenu` side flyout (see
+ * `renderAlbumSongMenu()`), so `#trackMenu` itself never grows taller. */
 function renderTrackMenu(): void {
   trackMenuEl.innerHTML = '';
 
@@ -617,20 +642,18 @@ function renderTrackMenu(): void {
     albums.get(album)!.push({ track, index });
   });
 
-  const currentAlbum = tracks[currentTrackIndex]?.meta.album;
-  if (currentAlbum) expandedAlbums.add(currentAlbum);
-
   for (const [album, albumTracks] of albums) {
-    const isExpanded = expandedAlbums.has(album);
+    const isOpen = openAlbumMenuFor === album;
     const isActiveAlbum = albumTracks.some(({ index }) => index === currentTrackIndex);
 
     const header = document.createElement('button');
     header.className = 'trackMenuAlbum';
     if (isActiveAlbum) header.classList.add('active');
+    if (isOpen) header.classList.add('expanded');
 
     const chevron = document.createElement('span');
     chevron.className = 'trackMenuAlbumChevron';
-    chevron.textContent = isExpanded ? '▾' : '▸';
+    chevron.textContent = isOpen ? '◂' : '▸';
     header.appendChild(chevron);
 
     const name = document.createElement('span');
@@ -644,26 +667,72 @@ function renderTrackMenu(): void {
     header.appendChild(count);
 
     header.addEventListener('click', () => {
-      if (expandedAlbums.has(album)) expandedAlbums.delete(album);
-      else expandedAlbums.add(album);
+      openAlbumMenuFor = openAlbumMenuFor === album ? null : album;
       renderTrackMenu();
+      renderAlbumSongMenu();
     });
     trackMenuEl.appendChild(header);
-
-    if (!isExpanded) continue;
-    for (const { track, index } of albumTracks) {
-      const item = document.createElement('button');
-      item.className = 'trackMenuSong';
-      item.textContent = track.meta.title;
-      if (index === currentTrackIndex) item.classList.add('active');
-      item.addEventListener('click', () => {
-        trackMenuEl.classList.remove('open');
-        void loadTrack(index);
-      });
-      trackMenuEl.appendChild(item);
-    }
   }
 }
+
+/** Renders (or hides) the side flyout listing `openAlbumMenuFor`'s songs,
+ * and positions it beside `#trackMenu` — to the right if there's room,
+ * otherwise to the left, clamped so it always stays fully on-screen. */
+function renderAlbumSongMenu(): void {
+  albumSongMenuEl.innerHTML = '';
+  if (!openAlbumMenuFor) {
+    albumSongMenuEl.classList.remove('open');
+    return;
+  }
+
+  const title = document.createElement('div');
+  title.className = 'settingsSectionTitle';
+  title.textContent = openAlbumMenuFor;
+  albumSongMenuEl.appendChild(title);
+
+  for (const index of albumTrackIndices(openAlbumMenuFor)) {
+    const track = tracks[index];
+    const item = document.createElement('button');
+    item.textContent = track.meta.title;
+    if (index === currentTrackIndex) item.classList.add('active');
+    item.addEventListener('click', () => {
+      trackMenuEl.classList.remove('open');
+      albumSongMenuEl.classList.remove('open');
+      openAlbumMenuFor = null;
+      void loadTrack(index);
+    });
+    albumSongMenuEl.appendChild(item);
+  }
+
+  albumSongMenuEl.classList.add('open');
+  positionAlbumSongMenu();
+}
+
+/** Anchors `#albumSongMenu` to `#trackMenu`'s current on-screen position —
+ * fixed positioning + a fresh measurement each time means it stays correct
+ * even as the main menu's own position shifts (narrow-viewport CSS, etc). */
+function positionAlbumSongMenu(): void {
+  const gap = 8;
+  const anchorRect = trackMenuEl.getBoundingClientRect();
+  const menuRect = albumSongMenuEl.getBoundingClientRect();
+  const viewportW = window.innerWidth;
+  const viewportH = window.innerHeight;
+
+  let left = anchorRect.right + gap;
+  if (left + menuRect.width > viewportW - gap) {
+    left = anchorRect.left - menuRect.width - gap;
+  }
+  left = Math.max(gap, Math.min(left, viewportW - menuRect.width - gap));
+
+  const top = Math.max(gap, Math.min(anchorRect.top, viewportH - menuRect.height - gap));
+
+  albumSongMenuEl.style.left = `${left}px`;
+  albumSongMenuEl.style.top = `${top}px`;
+}
+
+window.addEventListener('resize', () => {
+  if (openAlbumMenuFor) positionAlbumSongMenu();
+});
 
 /** Rebuilds the settings menu's "Background Scene" list — one button per
  * registered preset, disabled for presets that don't have a `factory`
@@ -730,17 +799,33 @@ function renderSettingsMenu(): void {
 trackMenuBtn.addEventListener('click', () => {
   settingsMenuEl.classList.remove('open');
   trackMenuEl.classList.toggle('open');
+  if (!trackMenuEl.classList.contains('open')) {
+    openAlbumMenuFor = null;
+    albumSongMenuEl.classList.remove('open');
+  }
 });
 settingsBtn.addEventListener('click', () => {
   trackMenuEl.classList.remove('open');
+  openAlbumMenuFor = null;
+  albumSongMenuEl.classList.remove('open');
   renderSettingsMenu();
   settingsMenuEl.classList.toggle('open');
 });
 prevBtn.addEventListener('click', () => {
-  void loadTrack((currentTrackIndex - 1 + tracks.length) % tracks.length);
+  void stepWithinAlbum(-1);
 });
 nextBtn.addEventListener('click', () => {
-  void loadTrack((currentTrackIndex + 1) % tracks.length);
+  void stepWithinAlbum(1);
+});
+// Auto-advance to the next song in the same album when one finishes —
+// each album plays through like its own playlist. `audio.paused` is
+// already true by the time `ended` fires, so `loadTrack()`'s own
+// wasPlaying-based resume can't restart playback here; force it instead.
+audio.addEventListener('ended', () => {
+  void stepWithinAlbum(1).then(() => {
+    ensureAudioGraph();
+    void audio.play();
+  });
 });
 
 void loadTracks()

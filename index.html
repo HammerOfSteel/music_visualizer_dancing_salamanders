@@ -99,22 +99,32 @@
       #trackMenuBtn:hover, #prevBtn:hover, #nextBtn:hover, #settingsBtn:hover {
         background: rgba(122, 100, 184, 0.25); opacity: 1;
       }
-      #trackMenu, #settingsMenu {
-        position: absolute; bottom: 74px; left: 50%; transform: translateX(-50%);
+      #trackMenu, #settingsMenu, #albumSongMenu {
         z-index: 11; min-width: 200px; max-width: 280px; max-height: 40vh; overflow-y: auto;
         background: rgba(20, 16, 34, 0.92); backdrop-filter: blur(10px);
         border: 1px solid rgba(140, 110, 220, 0.28); border-radius: 12px;
         box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
         padding: 6px; display: none; flex-direction: column; gap: 2px;
       }
-      #trackMenu.open, #settingsMenu.open { display: flex; }
-      #trackMenu button, #settingsMenu button {
+      #trackMenu, #settingsMenu {
+        position: absolute; bottom: 74px; left: 50%; transform: translateX(-50%);
+      }
+      /* Positioned dynamically in JS (fixed to the viewport, next to
+         #trackMenu) so opening an album's songs never grows #trackMenu
+         itself -- it flies out to the side instead. */
+      #albumSongMenu { position: fixed; }
+      #trackMenu.open, #settingsMenu.open, #albumSongMenu.open { display: flex; }
+      #trackMenu button, #settingsMenu button, #albumSongMenu button {
         display: block; width: 100%; text-align: left; background: transparent;
         border: none; border-radius: 8px; padding: 8px 10px; cursor: pointer;
         font: 13px 'Inter', system-ui, sans-serif; color: #e8e0ff;
       }
-      #trackMenu button:hover, #settingsMenu button:hover { background: rgba(122, 100, 184, 0.3); }
-      #trackMenu button.active, #settingsMenu button.active { color: #c9a8ff; font-weight: 600; }
+      #trackMenu button:hover, #settingsMenu button:hover, #albumSongMenu button:hover {
+        background: rgba(122, 100, 184, 0.3);
+      }
+      #trackMenu button.active, #settingsMenu button.active, #albumSongMenu button.active {
+        color: #c9a8ff; font-weight: 600;
+      }
       #trackMenu .trackMenuAlbum {
         display: flex; align-items: center; gap: 6px;
         font-weight: 600; color: #cfc4ea;
@@ -129,8 +139,11 @@
       #trackMenu .trackMenuAlbumCount {
         flex: 0 0 auto; font-size: 11px; opacity: 0.55; font-weight: 400;
       }
-      #trackMenu .trackMenuSong {
-        padding-left: 26px; font-size: 12.5px; opacity: 0.9;
+      #trackMenu .trackMenuAlbum.expanded { background: rgba(122, 100, 184, 0.2); }
+      #albumSongMenu .settingsSectionTitle {
+        font: 11px 'Inter', system-ui, sans-serif; text-transform: uppercase;
+        letter-spacing: 0.1em; color: #9c8cc4; opacity: 0.8;
+        padding: 6px 10px 2px;
       }
       #settingsMenu button:disabled {
         cursor: default; opacity: 0.4;
@@ -201,6 +214,7 @@
       </div>
       <div id="lyricsOverlay"></div>
       <div id="trackMenu"></div>
+      <div id="albumSongMenu"></div>
       <div id="settingsMenu"></div>
       <div id="transportBar">
         <button id="trackMenuBtn" aria-label="Track list" title="Tracks">☰</button>
