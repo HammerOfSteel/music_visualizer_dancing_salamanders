@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <title>Music Visualizer POC — The Bells of Lyonesse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      html, body { margin: 0; height: 100%; background: #0a0a12; overflow: hidden; }
+      #app { position: relative; width: 100vw; height: 100vh; }
+      #loadingOverlay {
+        position: absolute; inset: 0; z-index: 20;
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14px;
+        background: #0a0a12; transition: opacity 0.4s ease;
+      }
+      #loadingOverlay.hidden { opacity: 0; pointer-events: none; }
+      #loadingSpinner {
+        width: 34px; height: 34px; border-radius: 50%;
+        border: 3px solid rgba(140, 110, 220, 0.25); border-top-color: #a78bfa;
+        animation: loadingSpin 0.9s linear infinite;
+      }
+      #loadingText {
+        font: 13px 'Inter', system-ui, sans-serif; letter-spacing: 0.08em; text-transform: uppercase;
+        color: #cfc4ea; opacity: 0.7;
+      }
+      @keyframes loadingSpin { to { transform: rotate(360deg); } }
+      #trackHeader {
+        position: absolute; top: 22px; left: 50%; transform: translateX(-50%);
+        z-index: 10; text-align: center; pointer-events: none;
+        color: #e8e0ff; max-width: 92vw;
+        display: flex; flex-direction: column; align-items: center; gap: 4px;
+        animation: trackHeaderIn 0.9s ease-out;
+      }
+      #trackHeader .title {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: clamp(22px, 5.5vw, 34px); font-weight: 600; font-style: italic;
+        letter-spacing: 0.02em; line-height: 1.1;
+        text-shadow: 0 0 18px rgba(150, 110, 230, 0.65), 0 0 4px rgba(255, 255, 255, 0.25);
+      }
+      #trackHeader .divider {
+        width: 60px; height: 1px; margin: 3px 0;
+        background: linear-gradient(90deg, transparent, rgba(200, 180, 255, 0.55), transparent);
+      }
+      #trackHeader .album {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-size: clamp(13px, 3vw, 16px); font-weight: 500; font-style: italic;
+        letter-spacing: 0.05em; opacity: 0.8;
+        text-shadow: 0 0 10px rgba(120, 90, 200, 0.5);
+      }
+      #trackHeader .artist {
+        font-family: 'Inter', system-ui, sans-serif;
+        font-size: clamp(9px, 2vw, 11px); font-weight: 500; text-transform: uppercase;
+        letter-spacing: 0.22em; opacity: 0.55;
+        text-shadow: 0 0 8px rgba(120, 90, 200, 0.4);
+      }
+      @keyframes trackHeaderIn {
+        from { opacity: 0; transform: translateX(-50%) translateY(-8px); }
+        to { opacity: 1; transform: translateX(-50%) translateY(0); }
+      }
+      #lyricsOverlay {
+        position: absolute; bottom: 90px; left: 50%; transform: translateX(-50%);
+        z-index: 10; max-width: 70vw; text-align: center; pointer-events: none;
+        font: 20px/1.4 system-ui, sans-serif; color: #fff;
+        text-shadow: 0 0 16px rgba(255, 176, 102, 0.55), 0 2px 6px rgba(0,0,0,0.8);
+        opacity: 0; transition: opacity 0.15s linear;
+      }
+
+      /* --- Transport bar --- */
+      #transportBar {
+        position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+        z-index: 10; display: flex; align-items: center; gap: 12px;
+        width: min(520px, 92vw); padding: 10px 18px;
+        background: rgba(20, 16, 34, 0.55); backdrop-filter: blur(10px);
+        border: 1px solid rgba(140, 110, 220, 0.28); border-radius: 999px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+      }
+      #playBtn {
+        flex: 0 0 auto; width: 34px; height: 34px; padding: 0;
+        display: flex; align-items: center; justify-content: center;
+        font: 15px system-ui, sans-serif; line-height: 1;
+        background: #3a2f66; color: #f0e6ff; border: 1px solid #7a64b8;
+        border-radius: 50%; cursor: pointer;
+        transition: background 0.15s ease;
+      }
+      #playBtn:hover { background: #4a3d80; }
+      #trackMenuBtn, #prevBtn, #nextBtn, #settingsBtn {
+        flex: 0 0 auto; width: 26px; height: 26px; padding: 0;
+        display: flex; align-items: center; justify-content: center;
+        font: 12px system-ui, sans-serif; line-height: 1;
+        background: transparent; color: #cfc4ea; border: 1px solid transparent;
+        border-radius: 50%; cursor: pointer; opacity: 0.75;
+        transition: background 0.15s ease, opacity 0.15s ease;
+      }
+      #trackMenuBtn:hover, #prevBtn:hover, #nextBtn:hover, #settingsBtn:hover {
+        background: rgba(122, 100, 184, 0.25); opacity: 1;
+      }
+      #trackMenu, #settingsMenu {
+        position: absolute; bottom: 74px; left: 50%; transform: translateX(-50%);
+        z-index: 11; min-width: 200px; max-width: 280px; max-height: 40vh; overflow-y: auto;
+        background: rgba(20, 16, 34, 0.92); backdrop-filter: blur(10px);
+        border: 1px solid rgba(140, 110, 220, 0.28); border-radius: 12px;
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.45);
+        padding: 6px; display: none; flex-direction: column; gap: 2px;
+      }
+      #trackMenu.open, #settingsMenu.open { display: flex; }
+      #trackMenu button, #settingsMenu button {
+        display: block; width: 100%; text-align: left; background: transparent;
+        border: none; border-radius: 8px; padding: 8px 10px; cursor: pointer;
+        font: 13px 'Inter', system-ui, sans-serif; color: #e8e0ff;
+      }
+      #trackMenu button:hover, #settingsMenu button:hover { background: rgba(122, 100, 184, 0.3); }
+      #trackMenu button.active, #settingsMenu button.active { color: #c9a8ff; font-weight: 600; }
+      #settingsMenu button:disabled {
+        cursor: default; opacity: 0.4;
+      }
+      #settingsMenu button:disabled:hover { background: transparent; }
+      #settingsMenu .settingsSectionTitle {
+        font: 11px 'Inter', system-ui, sans-serif; text-transform: uppercase;
+        letter-spacing: 0.1em; color: #9c8cc4; opacity: 0.8;
+        padding: 6px 10px 2px;
+      }
+      #settingsMenu .settingsHint {
+        font: 11px 'Inter', system-ui, sans-serif; opacity: 0.55; margin-left: 6px;
+      }
+      .time {
+        flex: 0 0 auto; width: 38px; font: 11px/1 'Inter', system-ui, sans-serif;
+        color: #cfc4ea; opacity: 0.75; letter-spacing: 0.02em;
+      }
+      #timeElapsed { text-align: right; }
+      #timeDuration { text-align: left; }
+      input[type="range"] {
+        -webkit-appearance: none; appearance: none; background: transparent;
+        cursor: pointer; margin: 0;
+      }
+      #seekBar { flex: 1 1 auto; min-width: 0; }
+      input[type="range"]::-webkit-slider-runnable-track {
+        height: 3px; border-radius: 2px;
+        background: linear-gradient(90deg, #a78bfa var(--fill, 0%), rgba(255,255,255,0.18) var(--fill, 0%));
+      }
+      input[type="range"]::-webkit-slider-thumb {
+        -webkit-appearance: none; margin-top: -4.5px;
+        width: 12px; height: 12px; border-radius: 50%;
+        background: #e8e0ff; box-shadow: 0 0 6px rgba(167, 139, 250, 0.85);
+      }
+      input[type="range"]::-moz-range-track {
+        height: 3px; border-radius: 2px; background: rgba(255,255,255,0.18);
+      }
+      input[type="range"]::-moz-range-progress {
+        height: 3px; border-radius: 2px; background: #a78bfa;
+      }
+      input[type="range"]::-moz-range-thumb {
+        width: 12px; height: 12px; border-radius: 50%; border: none;
+        background: #e8e0ff; box-shadow: 0 0 6px rgba(167, 139, 250, 0.85);
+      }
+      #volumeControl { flex: 0 0 auto; display: flex; align-items: center; gap: 6px; }
+      #volumeIcon { font-size: 13px; opacity: 0.75; width: 16px; text-align: center; }
+      #volumeSlider { width: 60px; }
+
+      /* --- Narrow viewport (phones) --- */
+      @media (max-width: 480px) {
+        #transportBar { gap: 6px; padding: 8px 12px; }
+        .time { width: 30px; font-size: 10px; }
+        #volumeSlider { width: 36px; }
+        #lyricsOverlay { font-size: 16px; max-width: 88vw; bottom: 76px; }
+        #trackMenu, #settingsMenu { max-width: 88vw; }
+      }
+      @media (max-width: 360px) {
+        #volumeControl { display: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div id="trackHeader">
+        <div class="title" id="trackTitle"></div>
+        <div class="divider"></div>
+        <div class="album" id="trackAlbum"></div>
+        <div class="artist" id="trackArtist"></div>
+      </div>
+      <div id="lyricsOverlay"></div>
+      <div id="trackMenu"></div>
+      <div id="settingsMenu"></div>
+      <div id="transportBar">
+        <button id="trackMenuBtn" aria-label="Track list" title="Tracks">☰</button>
+        <button id="prevBtn" aria-label="Previous track" title="Previous track">⏮</button>
+        <button id="playBtn" aria-label="Play">▶</button>
+        <button id="nextBtn" aria-label="Next track" title="Next track">⏭</button>
+        <span class="time" id="timeElapsed">0:00</span>
+        <input type="range" id="seekBar" min="0" max="0" step="0.1" value="0" aria-label="Seek" />
+        <span class="time" id="timeDuration">0:00</span>
+        <div id="volumeControl">
+          <span id="volumeIcon">🔊</span>
+          <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1" aria-label="Volume" />
+        </div>
+        <button id="settingsBtn" aria-label="Settings" title="Settings">⚙</button>
+      </div>
+      <div id="loadingOverlay">
+        <div id="loadingSpinner"></div>
+        <div id="loadingText">Loading…</div>
+      </div>
+    </div>
+    <audio id="audio" preload="auto"></audio>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

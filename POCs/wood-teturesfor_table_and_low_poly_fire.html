@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cozy Low Poly Diorama</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { margin: 0; overflow: hidden; background-color: #1a1512; font-family: 'Inter', sans-serif; }
+        canvas { display: block; width: 100vw; height: 100vh; }
+        #ui-container {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(26, 21, 18, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 20px;
+            border-radius: 12px;
+            color: #e5e5e5;
+            width: 300px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .control-group { margin-bottom: 15px; }
+        .control-group label { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 5px; color: #a3a3a3; }
+        .control-group input[type="range"] { width: 100%; accent-color: #f59e0b; }
+        .value-display { float: right; font-weight: bold; color: #f59e0b; }
+    </style>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.150.0/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.150.0/examples/jsm/"
+            }
+        }
+    </script>
+</head>
+<body>
+
+    <div id="ui-container">
+        <h2 class="text-lg font-bold mb-4 text-white border-b border-gray-700 pb-2">Diorama Controls</h2>
+        
+        <div class="control-group">
+            <label>Focus Distance <span class="value-display" id="val-focus">28.0</span></label>
+            <input type="range" id="ctrl-focus" min="10" max="50" step="0.1" value="28.0">
+        </div>
+        
+        <div class="control-group">
+            <label>Aperture (Blur Amount) <span class="value-display" id="val-aperture">0.001</span></label>
+            <input type="range" id="ctrl-aperture" min="0" max="0.005" step="0.0001" value="0.001">
+        </div>
+        
+        <div class="control-group">
+            <label>Aperture (Blur Amount) <span class="value-display" id="val-aperture">0.005</span></label>
+            <input type="range" id="ctrl-aperture" min="0" max="0.02" step="0.001" value="0.005">
+        </div>
+        
+        <div class="control-group">
+            <label>Bloom Strength <span class="value-display" id="val-bloom">0.8</span></label>
+            <input type="range" id="ctrl-bloom" min="0" max="3" step="0.1" value="0.8">
+        </div>
+    </div>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+        import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+        import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
+        import { BokehPass } from 'three/addons/postprocessing/BokehPass.js';
+
+        // Global Variables
+        let camera, scene, renderer, composer, controls;
+        let bokehPass, bloomPass;
+        let targetFocus = 28.0;
+        let fireParticles = []; // Added array to track fire particles
+
+        init();
+        animate();
+
+        /**
+         * Best Practice for Low-Poly Procedural Textures:
+         * Instead of complex real-time shaders, we generate a stylized texture once on a canvas.
+         * We use stepped quantization (banding) to make the wood grain look painted or low-poly.
+         * We apply NearestFilter later so it looks crisp and retro.
+         */
+        function generateProceduralWoodTexture() {
+            const size = 512; // Resolution
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            const imgData = ctx.createImageData(size, size);
+            const data = imgData.data;
+
+            // Wood aesthetic parameters
+            const scaleX = 0.02; // Grain stretch along the long side
+            const scaleY = 0.15; 
+            const rings = 8.0;
+            const color1 = [92, 54, 18];    // Darker warm brown
+            const color2 = [135, 84, 38];   // Lighter warm brown
+            const steps = 5; // Quantization steps to make it look "stylized/banded"
+
+            for (let y = 0; y < size; y++) {
+                for (let x = 0; x < size; x++) {
+                    // Distort coordinates to create wavy grain
+                    let nx = x * scaleX;
+                    let ny = y * scaleY;
+                    let distortion = Math.sin(nx * 2.0) * 3.0 + Math.sin(nx * 0.5) * 1.5;
+
+                    // Calculate sine-based wood rings
+                    let value = Math.sin((ny + distortion) * rings);
+                    value = (value + 1) / 2; // Map -1..1 to 0..1
+
+                    // Quantize the value to create discrete color bands (stylized look)
+                    value = Math.floor(value * steps) / (steps - 1);
+
+                    // Add subtle linear noise for raw wood texture feeling
+                    let noise = (Math.random() - 0.5) * 0.1;
+                    value = Math.max(0, Math.min(1, value + noise));
+
+                    // Interpolate between the two wood colors
+                    let r = color1[0] + (color2[0] - color1[0]) * value;
+                    let g = color1[1] + (color2[1] - color1[1]) * value;
+                    let b = color1[2] + (color2[2] - color1[2]) * value;
+
+                    const index = (y * size + x) * 4;
+                    data[index] = r;
+                    data[index + 1] = g;
+                    data[index + 2] = b;
+                    data[index + 3] = 255;
+                }
+            }
+            
+            ctx.putImageData(imgData, 0, 0);
+
+            const texture = new THREE.CanvasTexture(canvas);
+            
+            // REMOVED NearestFilter to fix the "scan line" Moire pattern on the table.
+            // Using standard filtering combined with the quantization still looks stylized,
+            // but is much smoother at oblique angles.
+            texture.anisotropy = renderer ? renderer.capabilities.getMaxAnisotropy() : 4;
+            texture.wrapS = THREE.RepeatWrapping;
+            texture.wrapT = THREE.RepeatWrapping;
+            // Stretch texture slightly across the long table
+            texture.repeat.set(2, 1); 
+            
+            return texture;
+        }
+
+        function init() {
+            // 1. Core Setup
+            const container = document.createElement('div');
+            document.body.appendChild(container);
+
+            scene = new THREE.Scene();
+            scene.background = new THREE.Color(0x1a1512); // Very dark warm background
+            scene.fog = new THREE.FogExp2(0x1a1512, 0.015); // Fog to blend edges into darkness
+
+            // Camera setup to look along the long edge of the table
+            camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+            camera.position.set(-15, 12, 20); // Positioned slightly high, looking down
+            
+            renderer = new THREE.WebGLRenderer({ antialias: false }); // Antialias false enhances the retro sharp look
+            
+            // CRITICAL: Cap pixel ratio at 2 for performance, but ensure it scales properly to avoid native blurriness
+            const pixelRatio = Math.min(window.devicePixelRatio, 2);
+            renderer.setPixelRatio(pixelRatio);
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            renderer.shadowMap.enabled = true;
+            renderer.shadowMap.type = THREE.PCFSoftShadowMap; // Soft shadows for cozy feel
+            container.appendChild(renderer.domElement);
+
+            // 2. Lighting (Cozy setup)
+            // Ambient light (warm, low intensity)
+            const ambientLight = new THREE.AmbientLight(0xffddbb, 0.4);
+            scene.add(ambientLight);
+
+            // Directional light (main "sun/window" light casting shadows)
+            const dirLight = new THREE.DirectionalLight(0xffecd4, 1.2);
+            dirLight.position.set(-10, 15, 10);
+            dirLight.castShadow = true;
+            dirLight.shadow.mapSize.width = 2048;
+            dirLight.shadow.mapSize.height = 2048;
+            dirLight.shadow.camera.near = 0.5;
+            dirLight.shadow.camera.far = 50;
+            // Focus shadow camera tightly on the table
+            const d = 15;
+            dirLight.shadow.camera.left = -d;
+            dirLight.shadow.camera.right = d;
+            dirLight.shadow.camera.top = d;
+            dirLight.shadow.camera.bottom = -d;
+            dirLight.shadow.bias = -0.0005;
+            scene.add(dirLight);
+
+            // Point light (local warm source, like a candle/lamp)
+            const pointLight = new THREE.PointLight(0xff8800, 1.5, 20);
+            pointLight.position.set(2, 2, 0);
+            pointLight.castShadow = true;
+            scene.add(pointLight);
+
+            // 3. Table Object
+            const woodTexture = generateProceduralWoodTexture();
+            const tableGeo = new THREE.BoxGeometry(30, 1, 10);
+            const tableMat = new THREE.MeshStandardMaterial({ 
+                map: woodTexture,
+                roughness: 0.9, 
+                metalness: 0.0,
+                flatShading: true // Essential for low-poly look
+            });
+            const table = new THREE.Mesh(tableGeo, tableMat);
+            table.position.y = -0.5;
+            table.receiveShadow = true;
+            scene.add(table);
+
+            // 4. Props (Low Poly Cozy Items)
+            
+            // Hexagonal Mug (Contrasting cyan color)
+            const mugGeo = new THREE.CylinderGeometry(0.8, 0.8, 1.5, 6); // 6 segments = hexagonal low poly
+            const mugMat = new THREE.MeshStandardMaterial({ color: 0x0ea5e9, roughness: 0.4, flatShading: true });
+            const mug = new THREE.Mesh(mugGeo, mugMat);
+            mug.position.set(-3, 0.75, 1);
+            mug.castShadow = true;
+            mug.receiveShadow = true;
+            
+            // Mug handle
+            const handleGeo = new THREE.TorusGeometry(0.4, 0.15, 4, 6);
+            const handle = new THREE.Mesh(handleGeo, mugMat);
+            handle.position.set(0.8, 0, 0);
+            handle.rotation.z = Math.PI / 2;
+            mug.add(handle);
+            scene.add(mug);
+
+            // Book / Paper stack
+            const bookGeo = new THREE.BoxGeometry(3, 0.4, 4);
+            const bookMat = new THREE.MeshStandardMaterial({ color: 0xe5e7eb, roughness: 0.8, flatShading: true });
+            const book = new THREE.Mesh(bookGeo, bookMat);
+            book.position.set(3, 0.2, -1.5);
+            book.rotation.y = -0.2;
+            book.castShadow = true;
+            book.receiveShadow = true;
+            scene.add(book);
+
+            const bookCoverGeo = new THREE.BoxGeometry(3.1, 0.42, 4.1);
+            const bookCoverMat = new THREE.MeshStandardMaterial({ color: 0x9f1239, roughness: 0.6, flatShading: true });
+            const bookCover = new THREE.Mesh(bookCoverGeo, bookCoverMat);
+            book.add(bookCover); // Add as child
+
+            // Low poly Candle/Lamp
+            const candleGeo = new THREE.CylinderGeometry(0.4, 0.4, 1.2, 8);
+            const candleMat = new THREE.MeshStandardMaterial({ color: 0xffffff, roughness: 0.7, flatShading: true });
+            const candle = new THREE.Mesh(candleGeo, candleMat);
+            candle.position.set(2, 0.6, 1);
+            candle.castShadow = true;
+            scene.add(candle);
+
+            // Low Poly Stylized Fire Particles
+            const fireColors = [0xffee77, 0xffaa00, 0xff4400];
+            const particleGeo = new THREE.OctahedronGeometry(0.12, 0); // Low poly diamond shape
+            
+            for (let i = 0; i < 10; i++) {
+                const particleMat = new THREE.MeshBasicMaterial({ 
+                    color: fireColors[Math.floor(Math.random() * fireColors.length)],
+                    transparent: true,
+                    opacity: 0.9,
+                    blending: THREE.AdditiveBlending
+                });
+                const particle = new THREE.Mesh(particleGeo, particleMat);
+                
+                // Custom properties for animation
+                particle.userData = {
+                    life: Math.random(), // 0.0 to 1.0
+                    speed: 0.015 + Math.random() * 0.02,
+                    wobbleSpeed: 2 + Math.random() * 5,
+                    wobbleOffset: Math.random() * Math.PI * 2
+                };
+                
+                // Initial placement
+                particle.position.set(
+                    (Math.random() - 0.5) * 0.1,
+                    0.6 + particle.userData.life * 0.4,
+                    (Math.random() - 0.5) * 0.1
+                );
+                
+                candle.add(particle);
+                fireParticles.push(particle);
+            }
+            
+            // Floating Dust Particles (adds to the cozy atmosphere)
+            const dustGeo = new THREE.BufferGeometry();
+            const dustCount = 100;
+            const dustPositions = new Float32Array(dustCount * 3);
+            for(let i=0; i<dustCount*3; i+=3) {
+                dustPositions[i] = (Math.random() - 0.5) * 15;
+                dustPositions[i+1] = Math.random() * 5 + 0.5; // Above table
+                dustPositions[i+2] = (Math.random() - 0.5) * 8;
+            }
+            dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPositions, 3));
+            const dustMat = new THREE.PointsMaterial({
+                color: 0xffd0a0,
+                size: 0.05,
+                transparent: true,
+                opacity: 0.6,
+                blending: THREE.AdditiveBlending
+            });
+            const dustParticles = new THREE.Points(dustGeo, dustMat);
+            scene.add(dustParticles);
+
+            // 5. Post-Processing Pipeline
+            const renderScene = new RenderPass(scene, camera);
+
+            // UnrealBloomPass for dreamy highlights (Link's Awakening style glow)
+            bloomPass = new UnrealBloomPass(new THREE.Vector2(window.innerWidth, window.innerHeight), 1.5, 0.4, 0.85);
+            bloomPass.threshold = 0.5;
+            bloomPass.strength = 0.8; // Cozy glow
+            bloomPass.radius = 0.3;
+
+            // BokehPass for Tilt-Shift / Miniature Depth of Field
+            bokehPass = new BokehPass(scene, camera, {
+                focus: targetFocus,
+                aperture: 0.001,  // Greatly reduced to widen the focus band and prevent excessive blur
+                maxblur: 0.015,   // Maximum blur intensity
+                width: window.innerWidth,
+                height: window.innerHeight
+            });
+
+            composer = new EffectComposer(renderer);
+            // CRITICAL FIX: EffectComposer must also use the device pixel ratio, otherwise it gets blurry on high-DPI screens
+            composer.setPixelRatio(pixelRatio);
+            
+            composer.addPass(renderScene);
+            composer.addPass(bloomPass); // Add bloom first
+            composer.addPass(bokehPass); // Add depth of field last to blur the bloom
+
+            // 6. Controls
+            controls = new OrbitControls(camera, renderer.domElement);
+            controls.enableDamping = true;
+            controls.dampingFactor = 0.05;
+            controls.maxPolarAngle = Math.PI / 2 - 0.1; // Don't go below table
+            controls.minDistance = 10;
+            controls.maxDistance = 40;
+            controls.target.set(0, 0, 0); // Look at center
+
+            window.addEventListener('resize', onWindowResize);
+            setupUI();
+        }
+
+        function setupUI() {
+            const focusSlider = document.getElementById('ctrl-focus');
+            const apertureSlider = document.getElementById('ctrl-aperture');
+            const bloomSlider = document.getElementById('ctrl-bloom');
+
+            focusSlider.addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                bokehPass.uniforms['focus'].value = val;
+                targetFocus = val;
+                document.getElementById('val-focus').innerText = val.toFixed(1);
+            });
+
+            apertureSlider.addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                bokehPass.uniforms['aperture'].value = val;
+                document.getElementById('val-aperture').innerText = val.toFixed(4);
+            });
+
+            bloomSlider.addEventListener('input', (e) => {
+                const val = parseFloat(e.target.value);
+                bloomPass.strength = val;
+                document.getElementById('val-bloom').innerText = val.toFixed(1);
+            });
+        }
+
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            composer.setSize(window.innerWidth, window.innerHeight);
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            const time = Date.now() * 0.001;
+
+            // Subtle camera movement to make it feel alive
+            controls.update();
+
+            // Animate low poly fire particles
+            fireParticles.forEach(p => {
+                p.userData.life -= p.userData.speed;
+                
+                // Reset particle when it dies
+                if (p.userData.life <= 0) {
+                    p.userData.life = 1;
+                    p.position.set(
+                        (Math.random() - 0.5) * 0.15, // slight random spread at base
+                        0.55, // base height relative to candle
+                        (Math.random() - 0.5) * 0.15
+                    );
+                }
+                
+                // Float upwards
+                p.position.y += 0.015;
+                
+                // Wobble side to side
+                p.position.x += Math.sin(time * p.userData.wobbleSpeed + p.userData.wobbleOffset) * 0.003;
+                p.position.z += Math.cos(time * p.userData.wobbleSpeed + p.userData.wobbleOffset) * 0.003;
+                
+                // Shrink as it rises
+                const scale = p.userData.life;
+                p.scale.set(scale, scale, scale);
+                
+                // Fade out smoothly
+                p.material.opacity = p.userData.life * 1.5; 
+            });
+
+            // Animate dust particles slowly
+            const particles = scene.children.find(c => c.type === 'Points');
+            if(particles) {
+                particles.rotation.y = time * 0.05;
+                particles.position.y = Math.sin(time * 0.5) * 0.2;
+            }
+
+            // Flicker candle light
+            const pLight = scene.children.find(c => c.type === 'PointLight');
+            if(pLight) {
+                pLight.intensity = 1.5 + Math.random() * 0.4; // Slightly more dramatic flicker
+            }
+
+            // Render through the post-processing composer
+            composer.render();
+        }
+    </script>
+</body>
+</html>
