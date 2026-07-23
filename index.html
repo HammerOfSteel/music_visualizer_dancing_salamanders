@@ -145,6 +145,10 @@
         letter-spacing: 0.1em; color: #9c8cc4; opacity: 0.8;
         padding: 6px 10px 2px;
       }
+      /* Only shown in portrait mode (see below) — the drawer's way back to
+         the album list, since it replaces #trackMenu full-width there
+         instead of floating beside it. */
+      .albumSongMenuBack { display: none; }
       #settingsMenu button:disabled {
         cursor: default; opacity: 0.4;
       }
@@ -190,6 +194,32 @@
       #volumeControl { flex: 0 0 auto; display: flex; align-items: center; gap: 6px; }
       #volumeIcon { font-size: 13px; opacity: 0.75; width: 16px; text-align: center; }
       #volumeSlider { width: 60px; }
+
+      /* --- Portrait mode --- */
+      /* Toggled by JS off the actual rendered aspect ratio (not raw device
+         width) — this app is also embedded as an iframe on other pages
+         (dancingsalamanders.com's hero section), where the iframe can be a
+         portrait shape at any size, so a `max-width` media query alone
+         wouldn't catch a desktop-sized-but-portrait-shaped embed. */
+      #app.portrait #trackHeader { top: 14px; }
+      #app.portrait #lyricsOverlay { max-width: 88vw; font-size: 16px; bottom: 84px; }
+      #app.portrait #trackMenu,
+      #app.portrait #settingsMenu {
+        left: 12px; right: 12px; transform: none; width: auto;
+        max-width: none; max-height: 42vh;
+      }
+      /* The album list becomes a full-width drawer: tapping an album hides
+         #trackMenu (see JS `.hiddenByDrawer`) and this flies in full-width
+         from the bottom instead of floating beside it — side-by-side has
+         no room in a narrow portrait column. */
+      #app.portrait #albumSongMenu {
+        left: 12px; right: 12px; top: auto; bottom: 84px;
+        width: auto; max-width: none; max-height: 48vh;
+      }
+      #app.portrait #trackMenu.hiddenByDrawer { display: none; }
+      #app.portrait .albumSongMenuBack {
+        display: block; font-weight: 600; color: #cfc4ea; opacity: 0.85;
+      }
 
       /* --- Narrow viewport (phones) --- */
       @media (max-width: 480px) {

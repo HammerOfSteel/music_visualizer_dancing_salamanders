@@ -58,6 +58,14 @@ const audio = document.getElementById('audio') as HTMLAudioElement;
 const trackTitleEl = document.getElementById('trackTitle')!;
 const trackAlbumEl = document.getElementById('trackAlbum')!;
 const trackArtistEl = document.getElementById('trackArtist')!;
+
+// The album whose songs are currently shown in the `#albumSongMenu` flyout
+// (or its portrait-mode full-width drawer), or null when it's closed.
+// Declared up here (rather than beside `renderTrackMenu()` further down)
+// so `applyPortraitMode()` can safely reset it — that function runs once
+// immediately at module load, before a `let` declared later in the file
+// would be initialized yet.
+let openAlbumMenuFor: string | null = null;
 const lyricsEl = document.getElementById('lyricsOverlay')!;
 const seekBar = document.getElementById('seekBar') as HTMLInputElement;
 const timeElapsedEl = document.getElementById('timeElapsed')!;
@@ -142,7 +150,8 @@ scene.background = new THREE.Color(0x05060a);
 // back as z=-300) and clouds (as far as ~200 units from camera) were being
 // clipped by the camera's own far plane, not actually missing from the
 // scene.
-const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 600);
+const DEFAULT_FOV = 45;
+const camera = new THREE.PerspectiveCamera(DEFAULT_FOV, window.innerWidth / window.innerHeight, 0.1, 600);
 // Live-tuned default framing: standing high above the table looking down
 // and out over the valley so the terrain/mountains read. Captured via the
 // in-app camera-capture debug tool (press "C") after manually orbiting to
@@ -190,6 +199,56 @@ orbitControls.maxPolarAngle = Math.PI * 0.6;
 // zoom (and touch pinch-zoom) is turned off so scrolling stays free.
 orbitControls.enableZoom = false;
 orbitControls.update();
+
+// --- Portrait/mobile framing -----------------------------------------
+// Detection is ASPECT-RATIO based (width/height), not a raw device-width
+// media query — this app is also embedded as an iframe on other pages
+// (dancingsalamanders.com's hero section), where the iframe itself can be
+// sized in a portrait aspect regardless of the visiting device, so the
+// check has to key off the actual rendered shape, not screen width.
+const PORTRAIT_ASPECT_THRESHOLD = 0.9;
+const PORTRAIT_FOV = 62;
+// Widening the FOV alone would still crop the wide valley scene
+// horizontally in a narrow viewport, so the camera is also pulled back
+// along its existing view direction (same target, same angle) rather than
+// hand-tuning a whole new framing — a generic "zoom out to compensate for
+// lost horizontal FOV" move that keeps the same composed shot, just wider.
+const PORTRAIT_DISTANCE_SCALE = 1.35;
+let isPortraitMode = false;
+function computeIsPortrait(): boolean {
+  return window.innerWidth / window.innerHeight < PORTRAIT_ASPECT_THRESHOLD;
+}
+/** Swaps between the default (landscape) and portrait camera framing, and
+ * disables drag-to-orbit in portrait — touch-drag would otherwise fight
+ * the parent page's scroll/swipe gestures when embedded in a mobile-width
+ * iframe, the same concern that already disabled wheel/pinch zoom. */
+function applyPortraitMode(portrait: boolean): void {
+  isPortraitMode = portrait;
+  app.classList.toggle('portrait', portrait);
+  camera.fov = portrait ? PORTRAIT_FOV : DEFAULT_FOV;
+  if (portrait) {
+    const direction = new THREE.Vector3()
+      .subVectors(DEFAULT_CAMERA_POSITION, DEFAULT_CAMERA_TARGET)
+      .multiplyScalar(PORTRAIT_DISTANCE_SCALE);
+    camera.position.copy(DEFAULT_CAMERA_TARGET).add(direction);
+  } else {
+    camera.position.copy(DEFAULT_CAMERA_POSITION);
+  }
+  camera.lookAt(DEFAULT_CAMERA_TARGET);
+  orbitControls.target.copy(DEFAULT_CAMERA_TARGET);
+  orbitControls.enableRotate = !portrait;
+  orbitControls.enablePan = !portrait;
+  orbitControls.update();
+  // An in-progress orientation change (or an iframe host resizing its own
+  // portrait-shaped embed) mid-menu would otherwise leave a stale flyout
+  // positioned/sized for the mode it just left — simplest correct behaviour
+  // is to just close every menu on a portrait/landscape transition.
+  trackMenuEl.classList.remove('open');
+  settingsMenuEl.classList.remove('open');
+  albumSongMenuEl.classList.remove('open');
+  openAlbumMenuFor = null;
+}
+applyPortraitMode(computeIsPortrait());
 
 // --- Dev-only camera capture tool ------------------------------------
 // Drag/orbit/zoom to a nice framing, then press "C" to log the camera's
@@ -623,17 +682,16 @@ function stepWithinAlbum(delta: number): Promise<void> {
   return loadTrack(nextIndex);
 }
 
-// The album whose songs are currently shown in the `#albumSongMenu` flyout,
-// or null when it's closed. Only one album's songs are shown at a time —
-// clicking an album header in `#trackMenu` opens the flyout beside it
-// instead of growing `#trackMenu` itself.
-let openAlbumMenuFor: string | null = null;
-
 /** Renders one row per album (title + song count) — clicking a row opens/
  * closes that album's song list in the `#albumSongMenu` side flyout (see
  * `renderAlbumSongMenu()`), so `#trackMenu` itself never grows taller. */
 function renderTrackMenu(): void {
   trackMenuEl.innerHTML = '';
+  // In portrait mode, opening an album replaces the album list with a
+  // full-width drawer (see CSS `#app.portrait #albumSongMenu`) rather than
+  // flying out beside it — hide `#trackMenu` while that drawer is open so
+  // the two don't overlap in a narrow column.
+  trackMenuEl.classList.toggle('hiddenByDrawer', isPortraitMode && openAlbumMenuFor !== null);
 
   const albums = new Map<string, { track: LoadedTrack; index: number }[]>();
   tracks.forEach((track, index) => {
@@ -685,6 +743,21 @@ function renderAlbumSongMenu(): void {
     return;
   }
 
+  // Only visible in portrait mode (see CSS `.albumSongMenuBack`), where the
+  // drawer replaces `#trackMenu` full-width instead of floating beside it —
+  // this is the only way back to the album list in that layout. Harmless
+  // to always render it; the desktop side-flyout just hides it via CSS
+  // since the album list stays visible right next to it there.
+  const backBtn = document.createElement('button');
+  backBtn.className = 'albumSongMenuBack';
+  backBtn.textContent = '‹ Back to albums';
+  backBtn.addEventListener('click', () => {
+    openAlbumMenuFor = null;
+    renderTrackMenu();
+    renderAlbumSongMenu();
+  });
+  albumSongMenuEl.appendChild(backBtn);
+
   const title = document.createElement('div');
   title.className = 'settingsSectionTitle';
   title.textContent = openAlbumMenuFor;
@@ -712,6 +785,11 @@ function renderAlbumSongMenu(): void {
  * fixed positioning + a fresh measurement each time means it stays correct
  * even as the main menu's own position shifts (narrow-viewport CSS, etc). */
 function positionAlbumSongMenu(): void {
+  // Portrait mode lays the drawer out full-width via CSS (`#app.portrait
+  // #albumSongMenu`) instead of anchoring it beside `#trackMenu` — leave
+  // its position/size entirely to CSS there rather than fighting it with
+  // inline styles (which would otherwise win over the CSS rules).
+  if (isPortraitMode) return;
   const gap = 8;
   const anchorRect = trackMenuEl.getBoundingClientRect();
   const menuRect = albumSongMenuEl.getBoundingClientRect();
@@ -1004,6 +1082,8 @@ composer.addPass(bloomPass);
 composer.addPass(new OutputPass());
 
 function onResize(): void {
+  const portrait = computeIsPortrait();
+  if (portrait !== isPortraitMode) applyPortraitMode(portrait);
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
