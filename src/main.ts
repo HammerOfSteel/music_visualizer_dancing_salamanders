@@ -205,40 +205,80 @@ orbitControls.update();
 // media query — this app is also embedded as an iframe on other pages
 // (dancingsalamanders.com's hero section), where the iframe itself can be
 // sized in a portrait aspect regardless of the visiting device, so the
-// check has to key off the actual rendered shape, not screen width.
+// check has to key off the actual rendered shape, not screen width. That
+// same embed can also land at a much wider RANGE of portrait aspects than
+// any real phone — e.g. a host page with a fixed pixel iframe height that
+// doesn't shrink for narrow viewports can produce a far more extreme
+// (taller/narrower) ratio than a phone screen ever would — so the camera
+// framing below is a continuous curve over the actual aspect, not one
+// fixed portrait FOV/distance.
 const PORTRAIT_ASPECT_THRESHOLD = 0.9;
-const PORTRAIT_FOV = 62;
-// Widening the FOV alone would still crop the wide valley scene
-// horizontally in a narrow viewport, so the camera is also pulled back
-// along its existing view direction (same target, same angle) rather than
-// hand-tuning a whole new framing — a generic "zoom out to compensate for
-// lost horizontal FOV" move that keeps the same composed shot, just wider.
-const PORTRAIT_DISTANCE_SCALE = 1.35;
+// Anchor points (aspect, FOV, camera-distance multiplier) the framing curve
+// is interpolated between. WIDE matches the default landscape framing;
+// PHONE (aspect ~0.46, e.g. 390x844) was manually verified to look good;
+// EXTREME (aspect ~0.25 — narrower than any real phone) is a safety anchor
+// so odd embeds still get a reasonable, clamped framing instead of the
+// curve chasing an ever-more-extreme ratio into a fisheye/empty-void look.
+const PORTRAIT_ANCHOR_WIDE = { aspect: PORTRAIT_ASPECT_THRESHOLD, fov: DEFAULT_FOV, distanceScale: 1 };
+const PORTRAIT_ANCHOR_PHONE = { aspect: 0.46, fov: 62, distanceScale: 1.35 };
+const PORTRAIT_ANCHOR_EXTREME = { aspect: 0.25, fov: 80, distanceScale: 1.7 };
+function lerp(a: number, b: number, t: number): number {
+  return a + (b - a) * t;
+}
+/** Interpolates the portrait camera framing between the three anchor points
+ * above, keyed on the actual aspect ratio, and clamps beyond the extreme
+ * anchor rather than extrapolating further. */
+function computePortraitFraming(aspect: number): { fov: number; distanceScale: number } {
+  if (aspect >= PORTRAIT_ANCHOR_WIDE.aspect) return PORTRAIT_ANCHOR_WIDE;
+  if (aspect >= PORTRAIT_ANCHOR_PHONE.aspect) {
+    const t =
+      (PORTRAIT_ANCHOR_WIDE.aspect - aspect) / (PORTRAIT_ANCHOR_WIDE.aspect - PORTRAIT_ANCHOR_PHONE.aspect);
+    return {
+      fov: lerp(PORTRAIT_ANCHOR_WIDE.fov, PORTRAIT_ANCHOR_PHONE.fov, t),
+      distanceScale: lerp(PORTRAIT_ANCHOR_WIDE.distanceScale, PORTRAIT_ANCHOR_PHONE.distanceScale, t),
+    };
+  }
+  if (aspect >= PORTRAIT_ANCHOR_EXTREME.aspect) {
+    const t =
+      (PORTRAIT_ANCHOR_PHONE.aspect - aspect) / (PORTRAIT_ANCHOR_PHONE.aspect - PORTRAIT_ANCHOR_EXTREME.aspect);
+    return {
+      fov: lerp(PORTRAIT_ANCHOR_PHONE.fov, PORTRAIT_ANCHOR_EXTREME.fov, t),
+      distanceScale: lerp(PORTRAIT_ANCHOR_PHONE.distanceScale, PORTRAIT_ANCHOR_EXTREME.distanceScale, t),
+    };
+  }
+  return PORTRAIT_ANCHOR_EXTREME;
+}
 let isPortraitMode = false;
 function computeIsPortrait(): boolean {
   return window.innerWidth / window.innerHeight < PORTRAIT_ASPECT_THRESHOLD;
 }
-/** Swaps between the default (landscape) and portrait camera framing, and
- * disables drag-to-orbit in portrait — touch-drag would otherwise fight
- * the parent page's scroll/swipe gestures when embedded in a mobile-width
- * iframe, the same concern that already disabled wheel/pinch zoom. */
+/** Applies the camera framing for the CURRENT aspect ratio every time it's
+ * called (not just on portrait/landscape transitions) — aspect can vary a
+ * lot within "portrait" itself (e.g. 0.85 vs. 0.25 are both under the
+ * threshold but need very different compensation), so this has to track
+ * the live ratio continuously via `computePortraitFraming()`. */
+function applyCameraFraming(): void {
+  const aspect = window.innerWidth / window.innerHeight;
+  const { fov, distanceScale } = computePortraitFraming(aspect);
+  camera.fov = fov;
+  const direction = new THREE.Vector3()
+    .subVectors(DEFAULT_CAMERA_POSITION, DEFAULT_CAMERA_TARGET)
+    .multiplyScalar(distanceScale);
+  camera.position.copy(DEFAULT_CAMERA_TARGET).add(direction);
+  camera.lookAt(DEFAULT_CAMERA_TARGET);
+  orbitControls.target.copy(DEFAULT_CAMERA_TARGET);
+  camera.updateProjectionMatrix();
+}
+/** Toggles the portrait UI state (menu layout, orbit-drag) — kept separate
+ * from `applyCameraFraming()` so a resize that stays within "portrait"
+ * (aspect changing from e.g. 0.85 to 0.3) can still update the camera
+ * continuously without re-closing menus on every resize tick, only on an
+ * actual portrait/landscape crossing. */
 function applyPortraitMode(portrait: boolean): void {
   isPortraitMode = portrait;
   app.classList.toggle('portrait', portrait);
-  camera.fov = portrait ? PORTRAIT_FOV : DEFAULT_FOV;
-  if (portrait) {
-    const direction = new THREE.Vector3()
-      .subVectors(DEFAULT_CAMERA_POSITION, DEFAULT_CAMERA_TARGET)
-      .multiplyScalar(PORTRAIT_DISTANCE_SCALE);
-    camera.position.copy(DEFAULT_CAMERA_TARGET).add(direction);
-  } else {
-    camera.position.copy(DEFAULT_CAMERA_POSITION);
-  }
-  camera.lookAt(DEFAULT_CAMERA_TARGET);
-  orbitControls.target.copy(DEFAULT_CAMERA_TARGET);
   orbitControls.enableRotate = !portrait;
   orbitControls.enablePan = !portrait;
-  orbitControls.update();
   // An in-progress orientation change (or an iframe host resizing its own
   // portrait-shaped embed) mid-menu would otherwise leave a stale flyout
   // positioned/sized for the mode it just left — simplest correct behaviour
@@ -248,7 +288,9 @@ function applyPortraitMode(portrait: boolean): void {
   albumSongMenuEl.classList.remove('open');
   openAlbumMenuFor = null;
 }
+applyCameraFraming();
 applyPortraitMode(computeIsPortrait());
+orbitControls.update();
 
 // --- Dev-only camera capture tool ------------------------------------
 // Drag/orbit/zoom to a nice framing, then press "C" to log the camera's
@@ -1084,6 +1126,8 @@ composer.addPass(new OutputPass());
 function onResize(): void {
   const portrait = computeIsPortrait();
   if (portrait !== isPortraitMode) applyPortraitMode(portrait);
+  applyCameraFraming();
+  orbitControls.update();
   camera.aspect = window.innerWidth / window.innerHeight;
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
