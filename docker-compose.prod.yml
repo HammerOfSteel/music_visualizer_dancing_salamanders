@@ -1,7 +1,7 @@
 # Production Docker Compose
 # Run with: sudo docker compose -f docker-compose.prod.yml up --build -d
 # Bound to 127.0.0.1 only — the host's system nginx (with certbot certs)
-# terminates TLS and proxies music.livslusths.se to this port.
+# terminates TLS and proxies music.dancingsalamanders.com to this port.
 
 services:
   web:
