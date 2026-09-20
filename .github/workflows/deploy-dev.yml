@@ -37,8 +37,9 @@ jobs:
             cd "${DEPLOY_DIR}"
 
             # ── 2. Build and start production container ──────────────────
-            export WEB_PORT="3009"
-            sudo -E docker compose -f docker-compose.prod.yml up --build -d
+            # `sudo env VAR=val cmd` (not `export` + `sudo -E`) — sudoers on
+            # this host doesn't preserve arbitrary env vars via -E.
+            sudo env WEB_PORT="3009" docker compose -f docker-compose.prod.yml up --build -d
 
             # ── 3. Install nginx site config (first deploy only) ─────────
             if [ ! -f "${NGINX_SITE}" ]; then
