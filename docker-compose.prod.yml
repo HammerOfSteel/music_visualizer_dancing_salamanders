@@ -10,4 +10,5 @@ services:
       dockerfile: Dockerfile
     restart: unless-stopped
     ports:
-      - "127.0.0.1:3006:80"
+      # 3006 = prod, override with WEB_PORT for other environments (e.g. dev uses 3009)
+      - "127.0.0.1:${WEB_PORT:-3006}:80"
